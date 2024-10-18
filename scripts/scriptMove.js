@@ -1,11 +1,9 @@
-// TODO Сделать обработчик нажатий на стрелки клавиатры, Придумать ограничение движения
+// TODO Сделать функции движения наверх и вниз.
+
 const elevenCell = document.getElementById("11__Cell");
 const sevenCell = document.getElementById("7__Cell");
 
 window.addEventListener("keydown", (event) => {
-
-  console.log(event.key)
-
   switch (event.key) {
     case "ArrowUp":
       moveUP();
@@ -32,16 +30,12 @@ function moveUP() {}
 function moveDouwn() {}
 
 function moveLeft(arr) {
-
   for (rows of arr) {
-
-
     if (rows.at(0) === 0) {
-      rows.shift()
+      rows.shift();
       rows.push(0);
     }
   }
-  console.log(arr);
   return;
 }
 
@@ -52,6 +46,5 @@ function moveRight(arr) {
       rows.unshift(0);
     }
   }
-  console.log(arr);
   return;
 }

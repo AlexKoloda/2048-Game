@@ -1,27 +1,21 @@
-
-
-// TODO Придумать проверку ячеек и последовательность дейтсвий
+// TODO Придумать как реализовать анимации перехода между состояниями
 
 let gameContainer = document.querySelector(".game__container_iner");
-
 
 const gameMatrix = [
   [2, 0, 0, 0],
   [0, 2, 0, 0],
-  [0, 0, 2, 0],
+  [0, 2, 2, 0],
   [0, 0, 0, 2],
 ];
 
-
-
 function createGameField(arr) {
-  
-  gameContainer.innerHTML='';  
+  gameContainer.innerHTML = "";
 
   arr.flat().forEach((tailValue) => {
     const cell = document.createElement("div");
     const tail = document.createElement("div");
-    
+
     switch (tailValue) {
       case 0:
         cell.className = "game__cell";
@@ -90,4 +84,3 @@ function createGameField(arr) {
 }
 
 createGameField(gameMatrix);
-

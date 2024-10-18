@@ -45,6 +45,7 @@ h2 {
 }
 
 .header_score {
+  min-width: 100px;
   display: flex;
   padding: 5px 20px;
   border-radius: 10px;
