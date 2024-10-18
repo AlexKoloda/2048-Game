@@ -1,0 +1,253 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(250 248 240);
+  font-family: "Londrina Sketch", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+p {
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: 600;
+}
+/* -- HEADER -- */
+.header__main {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  padding: 20px 0;
+}
+
+.header__logo {
+  max-width: 100px;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+
+.header__currents {
+  display: flex;
+  gap: 20px;
+}
+
+.header_score {
+  display: flex;
+  padding: 5px 20px;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid black;
+}
+
+.header_button_new {
+  padding: 20px 20px;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  border: 3px solid black;
+  background-color: #faf8f000;
+  font-size: 30px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.header_button_new:hover {
+  transform: scale(1.1);
+}
+
+.header_button_new:active {
+  transform: scale(0.8);
+}
+/* -- /HEADER -- */
+
+/* -- GAME -- */
+.game__main {
+  display: flex;
+  justify-content: center;
+  padding: 100px 0;
+}
+
+.game__container_outer {
+  background-color: rgb(146, 133, 107);
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.game__container_iner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.game__cell {
+  position: relative;
+  padding: 50px;
+  background-color: rgb(184, 167, 134);
+  border-radius: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  box-shadow: rgb(0 0 0 / 19%) 0px 0px 2px 2px inset;
+}
+/* -- /GAME -- */
+
+.game__tail {
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  display: flex;
+  position: absolute;
+  
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgb(153 153 153 / 56%) 0px 1px 18px 1px inset,
+    rgb(255 255 255 / 56%) 0px 2px 0px 0px inset;
+  transition: 0.5s;
+}
+
+
+/* -- TAIL CASE -- */
+.tail_2 {
+  background-color: rgb(245, 238, 226);
+  color: rgba(0, 0, 0, 0.7);
+  content: "2";
+  transition: 0.5s;
+}
+
+.tail_2::after {
+  transition: 0.2s;
+  content: "2";
+}
+
+.tail_4 {
+  background-color: rgb(223, 202, 161);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.tail_4::after {
+    transition: 0.2s;
+  content: "4";
+}
+
+.tail_8 {
+  background-color: rgb(223, 187, 117);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.tail_8::after {
+    transition: 0.2s;
+  content: "8";
+}
+
+.tail_16 {
+  background-color: rgb(182, 153, 96);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tail_16::after {
+    transition: 0.2s;
+  content: "16";
+}
+
+.tail_32 {
+  background-color: rgb(182, 120, 96);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tail_32::after {
+    transition: 0.2s;
+  content: "32";
+}
+
+.tail_64 {
+  background-color: rgb(179, 94, 61);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tail_64::after {
+    transition: 0.2s;
+  content: "64";
+}
+
+.tail_128 {
+  background-color: rgb(147, 219, 138);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tail_128::after {
+    transition: 0.2s;
+  content: "128";
+}
+
+.tail_256 {
+  background-color: rgb(110, 221, 96);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tail_256::after {
+    transition: 0.2s;
+  content: "256";
+}
+
+.tail_512 {
+  background-color: rgb(151, 224, 68);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tail_512::after {
+    transition: 0.2s;
+  content: "512";
+}
+
+.tail_1024 {
+  background-color: rgb(205, 216, 51);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tail_1024::after {
+    transition: 0.2s;
+  content: "1024";
+}
+
+.tail_2048 {
+  background-color: rgb(43, 180, 204);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tail_2048::after {
+    transition: 0.2s;
+  content: "2048";
+}
+
+/* -- /TAIL CASE -- */
+
+/* -- FOOTER -- */
+.footer__main {
+  background-color: rgb(221, 219, 212);
+  padding: 30px 0 0;
+  display: flex;
+  justify-content: center;
+}
+/* --/FOOTER --*/
