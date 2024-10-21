@@ -6,9 +6,12 @@ scoreDisplay.innerHTML = score;
 bestScoreDisplay.innerHTML += score;
 
 function sumTailValue (a, b) {   
-    score += +a + +b;    
+    score += Number(a + b);    
     return a + b;
 }
+
+console.log(sumTailValue(4,4));
+
 
 
 function isEqual ( a, b ) {

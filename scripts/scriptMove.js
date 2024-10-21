@@ -6,7 +6,7 @@ const sevenCell = document.getElementById("7__Cell");
 window.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "ArrowUp":
-      moveUP();
+      moveUP(gameMatrix);
       break;
 
     case "ArrowDown":
@@ -25,7 +25,13 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-function moveUP() {}
+function moveUP(arr) {
+
+  for (rows of arr) {
+    console.log(rows);
+  }
+
+}
 
 function moveDouwn() {}
 

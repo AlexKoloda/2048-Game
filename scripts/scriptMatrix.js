@@ -1,10 +1,11 @@
 // TODO Придумать как реализовать анимации перехода между состояниями
 
 let gameContainer = document.querySelector(".game__container_iner");
+const buttonNewGame = document.querySelector(".header_button_new");
 
-const gameMatrix = [
+let gameMatrix = [
   [2, 0, 0, 0],
-  [0, 2, 0, 0],
+  [0, 0, 0, 0],
   [0, 2, 2, 0],
   [0, 0, 0, 2],
 ];
@@ -81,6 +82,26 @@ function createGameField(arr) {
 
     gameContainer.append(cell);
   });
+}
+
+buttonNewGame.addEventListener("click", () => {
+  createNewGeme();
+});
+
+function createNewGeme() {
+  let result = confirm("Вы точно хотите начать новую игру?");
+
+  if (!result) {
+    return;
+  }
+  gameMatrix = [
+    // TODO Добавить функцию рандомайзера!!! Статика для проверки визуальных эффектов.
+    [0, 0, 0, 0],
+    [0, 2, 2, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+  ];
+  createGameField(gameMatrix);
 }
 
 createGameField(gameMatrix);
