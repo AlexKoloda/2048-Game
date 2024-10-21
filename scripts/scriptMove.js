@@ -1,4 +1,5 @@
 // TODO Сделать функции движения наверх и вниз.
+// Найден баг про проверке условия когда 0 в центре, испрвить. А лучше уйти от for и переписать все на  map если будет время. 21.10
 
 const elevenCell = document.getElementById("11__Cell");
 const sevenCell = document.getElementById("7__Cell");
@@ -26,19 +27,24 @@ window.addEventListener("keydown", (event) => {
 });
 
 function moveUP(arr) {
+  for (let r = 0; r < arr.length; r++) {
+    let rows = arr[r];
+    
+    for (let c = 0; c < arr.length; c++) {    // Проход по колонкам
+      let columnsItem = arr[c][r];
+      
 
-  for (rows of arr) {
-    console.log(arr)
-    console.log(arr[0][0]);
-    for(columns of rows) {
-  
+
+      }
     }
-  }
+  
 
+  console.log(arr);
+  return;
 }
 
 function moveDouwn() {}
-
+// TODO Переделать условия функции на !==
 function moveLeft(arr) {
   for (rows of arr) {
     if (rows.at(0) === 0) {

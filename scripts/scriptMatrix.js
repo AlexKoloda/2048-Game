@@ -4,9 +4,9 @@ let gameContainer = document.querySelector(".game__container_iner");
 const buttonNewGame = document.querySelector(".header_button_new");
 
 let gameMatrix = [
-  [2, 0, 0, 0],
-  [4, 0, 0, 0],
-  [8, 2, 2, 0],
+  [0, 0, 0, 0],
+  [4, 0, 0, 0,],
+  [8, 0, 2, 0],
   [16, 0, 0, 2],
 ];
 
