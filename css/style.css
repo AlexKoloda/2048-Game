@@ -247,7 +247,11 @@ h2 {
 /* -- FOOTER -- */
 .footer__main {
   background-color: rgb(221, 219, 212);
-  padding: 30px 0 0;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+  padding: 40px 0;
+  
   display: flex;
   justify-content: center;
 }

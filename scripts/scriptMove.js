@@ -28,7 +28,11 @@ window.addEventListener("keydown", (event) => {
 function moveUP(arr) {
 
   for (rows of arr) {
-    console.log(rows);
+    console.log(arr)
+    console.log(arr[0][0]);
+    for(columns of rows) {
+  
+    }
   }
 
 }

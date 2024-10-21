@@ -5,9 +5,9 @@ const buttonNewGame = document.querySelector(".header_button_new");
 
 let gameMatrix = [
   [2, 0, 0, 0],
-  [0, 0, 0, 0],
-  [0, 2, 2, 0],
-  [0, 0, 0, 2],
+  [4, 0, 0, 0],
+  [8, 2, 2, 0],
+  [16, 0, 0, 2],
 ];
 
 function createGameField(arr) {

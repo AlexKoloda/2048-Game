@@ -10,10 +10,6 @@ function sumTailValue (a, b) {
     return a + b;
 }
 
-console.log(sumTailValue(4,4));
-
-
-
 function isEqual ( a, b ) {
  return (a === b ); 
 }
