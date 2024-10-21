@@ -8,10 +8,12 @@ window.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "ArrowUp":
       moveUP(gameMatrix);
+      createGameField(gameMatrix);
       break;
 
     case "ArrowDown":
-      moveDouwn();
+      moveDouwn(gameMatrix);
+      createGameField(gameMatrix);
       break;
 
     case "ArrowLeft":
@@ -26,25 +28,36 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
+// TODO Переделать условия функции на !== и сделать рефакторинг кода
+
 function moveUP(arr) {
-  for (let r = 0; r < arr.length; r++) {
-    let rows = arr[r];
-    
-    for (let c = 0; c < arr.length; c++) {    // Проход по колонкам
-      let columnsItem = arr[c][r];
-      
-
-
+  for (let row = 0; row < arr.length; row++) {
+    for (let col = 0; col < arr.length; col++) {
+      if (col !== 3) {
+        if (arr[col][row] === 0) {
+          arr[col][row] = arr[col + 1][row];
+          arr[col + 1][row] = 0;
+        }
       }
     }
-  
-
-  console.log(arr);
-  return;
+  }
 }
 
-function moveDouwn() {}
-// TODO Переделать условия функции на !==
+function moveDouwn(arr) {
+  let resArr = arr.reverse();
+  for (let row = 0; row < resArr.length; row++) {
+    for (let col = 0; col < resArr.length; col++) {
+      if (col !== 3) {
+        if (resArr[col][row] === 0) {
+          resArr[col][row] = arr[col + 1][row];
+          resArr[col + 1][row] = 0;
+        }
+      }
+    }
+  }
+  arr = resArr.reverse();
+}
+
 function moveLeft(arr) {
   for (rows of arr) {
     if (rows.at(0) === 0) {
