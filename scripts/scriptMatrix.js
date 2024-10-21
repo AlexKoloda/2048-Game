@@ -4,11 +4,12 @@ let gameContainer = document.querySelector(".game__container_iner");
 const buttonNewGame = document.querySelector(".header_button_new");
 
 let gameMatrix = [
-  [0, 0, 0, 0],
-  [4, 0, 0, 0,],
-  [8, 0, 2, 0],
-  [16, 0, 0, 2],
+  [2, 2, 0, 0],
+  [2, 2, 0, 0],
+  [4, 4, 0, 0],
+  [4, 4, 0, 0],
 ];
+
 
 function createGameField(arr) {
   gameContainer.innerHTML = "";
@@ -96,10 +97,10 @@ function createNewGeme() {
   }
   gameMatrix = [
     // TODO Добавить функцию рандомайзера!!! Статика для проверки визуальных эффектов.
+    [2, 0, 0, 0],
     [0, 0, 0, 0],
-    [0, 2, 2, 0],
     [0, 0, 0, 0],
-    [0, 0, 0, 0],
+    [0, 0, 2, 0],
   ];
   createGameField(gameMatrix);
 }
