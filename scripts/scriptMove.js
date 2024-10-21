@@ -21,8 +21,8 @@ window.addEventListener("keydown", (event) => {
       createGameField(gameMatrix);
       break;
 
-    case "ArrowRight":
-      sumTailValue(gameMatrix);
+    case "ArrowRight":    
+      sumTailValue(gameMatrix); 
       moveRight(gameMatrix);
       createGameField(gameMatrix);
       break;
@@ -33,57 +33,66 @@ window.addEventListener("keydown", (event) => {
 
 function moveUP(arr) {
   for (i = 0; i < 4; i++) {
-    for (let row = 0; row < arr.length; row++) {
-      for (let col = 0; col < arr.length; col++) {
-        if (col !== 3) {
-          if (arr[col][row] === 0) {
-            arr[col][row] = arr[col + 1][row];
-            arr[col + 1][row] = 0;
-          }
+
+  for (let row = 0; row < arr.length; row++) {
+    for (let col = 0; col < arr.length; col++) {
+      if (col !== 3) {
+        if (arr[col][row] === 0) {
+          arr[col][row] = arr[col + 1][row];
+          arr[col + 1][row] = 0;
         }
       }
     }
   }
-  return;
+}
+return;
 }
 
 function moveDouwn(arr) {
   let resArr = arr.reverse();
   for (i = 0; i < 4; i++) {
-    for (let row = 0; row < resArr.length; row++) {
-      for (let col = 0; col < resArr.length; col++) {
-        if (col !== 3) {
-          if (resArr[col][row] === 0) {
-            resArr[col][row] = arr[col + 1][row];
-            resArr[col + 1][row] = 0;
-          }
+
+  
+  for (let row = 0; row < resArr.length; row++) {
+    for (let col = 0; col < resArr.length; col++) {
+      if (col !== 3) {
+        if (resArr[col][row] === 0) {
+          resArr[col][row] = arr[col + 1][row];
+          resArr[col + 1][row] = 0;
         }
       }
     }
   }
-  return (arr = resArr.reverse());
+}
+ return arr = resArr.reverse();
 }
 
 function moveLeft(arr) {
+
   for (i = 0; i < 4; i++) {
-    for (rows of arr) {
-      if (rows.at(0) === 0) {
-        rows.shift();
-        rows.push(0);
-      }
+
+  for (rows of arr) {
+    if (rows.at(0) === 0) {
+      rows.shift();
+      rows.push(0);
     }
   }
+}
   return;
+
 }
 
+
 function moveRight(arr) {
-  for (i = 0; i < 4; i++) {
-    for (rows of arr) {
-      if (rows.at(-1) === 0) {
-        rows.pop();
-        rows.unshift(0);
-      }
+
+for (i = 0; i < 4; i++) {
+
+  for (rows of arr) {
+    if (rows.at(-1) === 0) {
+      rows.pop();
+      rows.unshift(0);
     }
   }
-  return;
+}
+  return; 
 }
