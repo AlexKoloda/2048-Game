@@ -17,6 +17,7 @@ window.addEventListener("keydown", (event) => {
       break;
 
     case "ArrowLeft":
+      sumTailValue(gameMatrix); 
       moveLeft(gameMatrix);
       createGameField(gameMatrix);
       break;

@@ -140,6 +140,7 @@ h2 {
 .tail_2::after {
   transition: 0.2s;
   content: "2";
+ 
 }
 
 .tail_4 {
@@ -150,6 +151,11 @@ h2 {
 .tail_4::after {
     transition: 0.2s;
   content: "4";
+  transform: scale(1.1);
+}
+.tail_4::before{
+  transition: 0.2s;
+transform: scale(1.1);
 }
 
 .tail_8 {
