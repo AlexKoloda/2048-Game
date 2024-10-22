@@ -22,7 +22,7 @@ function isEqual(a, b) {
   return a === b;
 }
 
-function sumScore(a, b) {
+function sumTailValue(a, b) {
     return  a + b; 
 
 }

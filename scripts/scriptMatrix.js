@@ -5,9 +5,9 @@ const buttonNewGame = document.querySelector(".header_button_new");
 
 let gameMatrix = [
   [0, 0, 0, 0],
-  [0, 2, 2, 0],
   [0, 0, 0, 0],
-  [0, 2, 2, 0],
+  [0, 0, 0, 0],
+  [0, 0, 0, 0],
 ];
 
 
@@ -96,10 +96,10 @@ function createNewGeme() {
     return;
   }
   gameMatrix = [
-    [2, 2, 0, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 0],
-    [0, 0, 0, 0],
+    [0, 2, 0, 0],
+    [0, 0, 0, 2],
   ];
 
   createGameField(gameMatrix);

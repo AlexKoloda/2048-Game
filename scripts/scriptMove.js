@@ -1,5 +1,4 @@
-// TODO Сделать функции движения наверх и вниз.
-// Найден баг про проверке условия когда 0 в центре, !ИСПРАВИТЬ!. А лучше уйти от for и переписать все на  map если будет время. 21.10
+// Найден баг про проверке условия когда 0 в центре, !ИСПРАВИТЬ!. А лучше уйти от for и переписать все на методы массивов если будет время. 21.10
 
 window.addEventListener("keydown", (event) => {
   switch (event.key) {
@@ -36,7 +35,7 @@ function moveUP(arr) {
             arr[col][row] = arr[col + 1][row];
             arr[col + 1][row] = 0;
           } else if (isEqual(arr[col][row], arr[col + 1][row])) {
-            arr[col][row] = sumScore(arr[col][row], arr[col + 1][row]);
+            arr[col][row] = sumTailValue(arr[col][row], arr[col + 1][row]);
             arr[col + 1][row] = 0;
           }
         }
@@ -56,7 +55,10 @@ function moveDouwn(arr) {
             resArr[col][row] = arr[col + 1][row];
             resArr[col + 1][row] = 0;
           } else if (isEqual(resArr[col][row], arr[col + 1][row])) {
-            resArr[col][row] = sumScore(resArr[col][row], arr[col + 1][row]);
+            resArr[col][row] = sumTailValue(
+              resArr[col][row],
+              arr[col + 1][row]
+            );
             resArr[col + 1][row] = 0;
           }
         }
@@ -68,10 +70,17 @@ function moveDouwn(arr) {
 
 function moveLeft(arr) {
   for (i = 0; i < 4; i++) {
-    for (rows of arr) {
-      if (rows.at(0) === 0) {
-        rows.shift();
-        rows.push(0);
+    for (let row = 0; row < arr.length; row++) {
+      for (let col = 0; col < arr.length; col++) {
+        if (col !== 3) {
+          if (arr[row][col] === 0) {
+            arr[row][col] = arr[row][col + 1];
+            arr[row][col + 1] = 0;
+          } else if (isEqual(arr[row][col], arr[row][col + 1])) {
+            arr[row][col] = sumTailValue(arr[row][col], arr[row][col + 1]);
+            arr[row][col + 1] = 0;
+          }
+        }
       }
     }
   }
@@ -80,10 +89,21 @@ function moveLeft(arr) {
 
 function moveRight(arr) {
   for (i = 0; i < 4; i++) {
-    for (rows of arr) {
-      if (rows.at(-1) === 0) {
-        rows.pop();
-        rows.unshift(0);
+    for (let row = 0; row < arr.length; row++) {
+      for (let col = 0; col < arr.length; col++) {
+        if (col !== 3) {
+          if (arr[row][arr.length - 1] === 0) {
+            arr[row][arr.length - 1] = arr[row][col];
+            arr[row][col] = 0;
+          } else if (isEqual(arr[row][arr.length - 1], arr[row][col])) {
+            console.log(sumTailValue(arr[row][arr.length - 1], arr[row][col]));
+            arr[row][arr.length - 1] = sumTailValue(
+              arr[row][arr.length - 1],
+              arr[row][col]
+            );
+            arr[row][col] = 0;
+          }
+        }
       }
     }
   }
