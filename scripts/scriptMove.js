@@ -4,21 +4,25 @@ window.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "ArrowUp":
       moveUP(gameMatrix);
+      generateCell(gameMatrix);
       createGameField(gameMatrix);
       break;
 
     case "ArrowDown":
       moveDouwn(gameMatrix);
+      generateCell(gameMatrix);
       createGameField(gameMatrix);
       break;
 
     case "ArrowLeft":
       moveLeft(gameMatrix);
+      generateCell(gameMatrix);
       createGameField(gameMatrix);
       break;
 
     case "ArrowRight":
       moveRight(gameMatrix);
+      generateCell(gameMatrix);
       createGameField(gameMatrix);
       break;
   }
@@ -88,24 +92,29 @@ function moveLeft(arr) {
 }
 
 function moveRight(arr) {
+  reverseMatrix(arr);
   for (i = 0; i < 4; i++) {
     for (let row = 0; row < arr.length; row++) {
       for (let col = 0; col < arr.length; col++) {
         if (col !== 3) {
-          if (arr[row][arr.length - 1] === 0) {
-            arr[row][arr.length - 1] = arr[row][col];
-            arr[row][col] = 0;
-          } else if (isEqual(arr[row][arr.length - 1], arr[row][col])) {
-            console.log(sumTailValue(arr[row][arr.length - 1], arr[row][col]));
-            arr[row][arr.length - 1] = sumTailValue(
-              arr[row][arr.length - 1],
-              arr[row][col]
-            );
-            arr[row][col] = 0;
+          if (arr[row][col] === 0) {
+            arr[row][col] = arr[row][col + 1];
+            arr[row][col + 1] = 0;
+          } else if (isEqual(arr[row][col], arr[row][col + 1])) {
+            arr[row][col] = sumTailValue(arr[row][col], arr[row][col + 1]);
+            arr[row][col + 1] = 0;
           }
         }
       }
     }
   }
-  return;
+  return reverseMatrix(arr);
 }
+
+
+
+function reverseMatrix(arr) {
+  arr.map(item => {    
+    return item.reverse();
+  })
+};
