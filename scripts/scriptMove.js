@@ -6,25 +6,25 @@ window.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "ArrowUp":
       moveUP(gameMatrix);
-      //generateCell(gameMatrix);
+      generateCell(gameMatrix);
       createGameField(gameMatrix);
       break;
 
     case "ArrowDown":
       moveDouwn(gameMatrix);
-      //generateCell(gameMatrix);
+      generateCell(gameMatrix);
       createGameField(gameMatrix);
       break;
 
     case "ArrowLeft":
       moveLeft(gameMatrix);
-      //generateCell(gameMatrix);
+      generateCell(gameMatrix);
       createGameField(gameMatrix);
       break;
 
     case "ArrowRight":
       moveRight(gameMatrix);
-      //generateCell(gameMatrix);
+      generateCell(gameMatrix);
       createGameField(gameMatrix);
       break;
   }
