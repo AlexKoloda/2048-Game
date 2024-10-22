@@ -22,7 +22,7 @@ buttonNewGame.addEventListener("click", () => {
   createNewGeme(gameMatrix);
 });
 
-function createNewGeme(arr) {
+function createNewGame(arr) {
   createGameField(gameMatrix);
 }
 
@@ -74,7 +74,7 @@ function generateTailValue() {
   }
 }
 
-function createNewGeme() {
+function createNewGame() {
 
   gameContainer.innerHTML = "";  
 
