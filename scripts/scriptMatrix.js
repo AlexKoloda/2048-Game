@@ -26,14 +26,13 @@ function createNewGeme(arr) {
   createGameField(gameMatrix);
 }
 
-function createGameField(arr, isFirstCall = false) {
+function createGameField(arr, isFirstCall = false) {  
+  gameContainer.innerHTML = "";
 
   if (isFirstCall) {
     generateCell(gameMatrix);
     generateCell(gameMatrix);
-  }
-
-  gameContainer.innerHTML = "";
+  } 
 
   arr.flat().forEach((tailValue) => {
     const cell = document.createElement("div");
@@ -48,6 +47,7 @@ function createGameField(arr, isFirstCall = false) {
       cell.append(tail);
     }
     gameContainer.append(cell);
+    
   });
 }
 
@@ -74,12 +74,16 @@ function generateTailValue() {
   }
 }
 
-function createNewGeme(arr) {
+function createNewGeme() {
+
+  gameContainer.innerHTML = "";  
+
   if (isFirstCall) {
     isFirstCall = false;
     generateCell();
     generateCell();
   }
+  
   createGameField(gameMatrix);
 }
 

@@ -1,28 +1,30 @@
 // Найден баг про проверке условия когда 0 в центре, !ИСПРАВИТЬ!. А лучше уйти от for и переписать все на методы массивов если будет время. 21.10
 
+
+
 window.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "ArrowUp":
       moveUP(gameMatrix);
-      generateCell(gameMatrix);
+      //generateCell(gameMatrix);
       createGameField(gameMatrix);
       break;
 
     case "ArrowDown":
       moveDouwn(gameMatrix);
-      generateCell(gameMatrix);
+      //generateCell(gameMatrix);
       createGameField(gameMatrix);
       break;
 
     case "ArrowLeft":
       moveLeft(gameMatrix);
-      generateCell(gameMatrix);
+      //generateCell(gameMatrix);
       createGameField(gameMatrix);
       break;
 
     case "ArrowRight":
       moveRight(gameMatrix);
-      generateCell(gameMatrix);
+      //generateCell(gameMatrix);
       createGameField(gameMatrix);
       break;
   }
@@ -110,8 +112,6 @@ function moveRight(arr) {
   }
   return reverseMatrix(arr);
 }
-
-
 
 function reverseMatrix(arr) {
   arr.map(item => {    
