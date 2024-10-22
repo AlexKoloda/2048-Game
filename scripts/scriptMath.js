@@ -26,3 +26,14 @@ function sumTailValue(a, b) {
     return  a + b; 
 
 }
+
+function generateRandom() {
+
+const randomNumber = Math.floor(Math.random()* gameMatrix.length)
+
+  if (gameMatrix[randomNumber][randomNumber].innerHTML === 0) {
+        cell.className = "game__cell";
+        tail.className = "game__tail tail_2";
+        cell.append(tail);
+  } else generateRandom()
+}
