@@ -1,32 +1,37 @@
 // Найден баг про проверке условия когда 0 в центре, !ИСПРАВИТЬ!. А лучше уйти от for и переписать все на методы массивов если будет время. 21.10
-
-
-
-window.addEventListener("keydown", (event) => {
+window.addEventListener('keydown', (event) => {
   switch (event.key) {
-    case "ArrowUp":
-      moveUP(gameMatrix);
-      generateCell(gameMatrix);
-      createGameField(gameMatrix);
-      break;
+    case 'ArrowUp':
+      if (!isGameOver) {
+        moveUP(gameMatrix);
+        generateCell(gameMatrix);
+        createGameField(gameMatrix);
+        break;
+      }
 
-    case "ArrowDown":
-      moveDouwn(gameMatrix);
-      generateCell(gameMatrix);
-      createGameField(gameMatrix);
-      break;
+    case 'ArrowDown':
+      if (!isGameOver) {
+        moveDouwn(gameMatrix);
+        generateCell(gameMatrix);
+        createGameField(gameMatrix);
+        break;
+      }
 
-    case "ArrowLeft":
-      moveLeft(gameMatrix);
-      generateCell(gameMatrix);
-      createGameField(gameMatrix);
-      break;
+    case 'ArrowLeft':
+      if (!isGameOver) {
+        moveLeft(gameMatrix);
+        generateCell(gameMatrix);
+        createGameField(gameMatrix);
+        break;
+      }
 
-    case "ArrowRight":
-      moveRight(gameMatrix);
-      generateCell(gameMatrix);
-      createGameField(gameMatrix);
-      break;
+    case 'ArrowRight':
+      if (!isGameOver) {
+        moveRight(gameMatrix);
+        generateCell(gameMatrix);
+        createGameField(gameMatrix);
+        break;
+      }
   }
 });
 
@@ -48,7 +53,6 @@ function moveUP(arr) {
       }
     }
   }
-  return;
 }
 
 function moveDouwn(arr) {
@@ -71,7 +75,7 @@ function moveDouwn(arr) {
       }
     }
   }
-  return (arr = resArr.reverse());
+ return resArr.reverse();
 }
 
 function moveLeft(arr) {
@@ -90,7 +94,6 @@ function moveLeft(arr) {
       }
     }
   }
-  return;
 }
 
 function moveRight(arr) {
@@ -114,7 +117,7 @@ function moveRight(arr) {
 }
 
 function reverseMatrix(arr) {
-  arr.map(item => {    
+  arr.map((item) => {
     return item.reverse();
-  })
-};
+  });
+}

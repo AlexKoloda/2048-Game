@@ -2,8 +2,8 @@
 
 /* 4) в дополнению к пункту 2, после генерации ячейки, стоит проверить, если вообще дальше смысл играть */
 
-let gameContainer = document.querySelector(".game__container_iner");
-const buttonNewGame = document.querySelector(".header_button_new");
+let gameContainer = document.querySelector('.game__container_iner');
+const buttonNewGame = document.querySelector('.header_button_new');
 let isFirstCall = true;
 
 let gameMatrix = [
@@ -13,45 +13,45 @@ let gameMatrix = [
   [0, 0, 0, 0],
 ];
 
-buttonNewGame.addEventListener("click", () => {
-  let newGame = confirm("Начать новую игру?");
+buttonNewGame.addEventListener('click', () => {
+  let newGame = confirm('Начать новую игру?');
 
   if (!newGame) {
     return;
   }
-  createNewGame(gameMatrix);
+
+  createNewGeme(gameMatrix);
 });
 
-function createNewGame(arr) {
-  createGameField(gameMatrix);
+function createNewGeme(arr) {
+  createGameField(arr, true);
 }
 
-function createGameField(arr, isFirstCall = false) {  
-  gameContainer.innerHTML = "";
+function createGameField(arr, isFirstCall = false) {
+  gameContainer.innerHTML = '';
 
   if (isFirstCall) {
-    generateCell(gameMatrix);
-    generateCell(gameMatrix);
-  } 
+    generateCell(gameMatrix, true);
+    generateCell(gameMatrix, true);
+  }
 
   arr.flat().forEach((tailValue) => {
-    const cell = document.createElement("div");
-    const tail = document.createElement("div");
-    cell.className = "game__cell";
+    const cell = document.createElement('div');
+    const tail = document.createElement('div');
+    cell.className = 'game__cell';
 
     if (tailValue === 0) {
-      tail.className = "game__tail";
+      tail.className = 'game__tail';
       cell.append(tail);
     } else {
       tail.className = `game__tail tail_${tailValue}`;
       cell.append(tail);
     }
     gameContainer.append(cell);
-    
   });
 }
 
-function generateCell(arr) {
+function generateCell(arr, skipGameOverChecking = false) {
   arr = gameMatrix;
   const colIndex = Math.floor(Math.random() * 4);
   const rowIndex = Math.floor(Math.random() * 4);
@@ -59,6 +59,11 @@ function generateCell(arr) {
   if (arr[colIndex][rowIndex] === 0) {
     const tailValue = generateTailValue();
     arr[colIndex][rowIndex] = tailValue;
+
+    
+    if (!skipGameOverChecking) {
+      checkGameOver(arr);
+    }
   } else {
     generateCell(arr);
   }
@@ -74,17 +79,21 @@ function generateTailValue() {
   }
 }
 
-function createNewGame() {
+function createNewGeme() {
+  gameContainer.innerHTML = '';
 
-  gameContainer.innerHTML = "";  
+  createGameField(gameMatrix, true);
+}
 
-  if (isFirstCall) {
-    isFirstCall = false;
-    generateCell();
-    generateCell();
+let isGameOver = false;
+
+function checkGameOver(arr) {
+  const hasZero = arr.flat().some((item) => item === 0);
+
+  if (!hasZero) {
+    isGameOver = true;
+    alert('game over');
   }
-  
-  createGameField(gameMatrix);
 }
 
 createGameField(gameMatrix);
