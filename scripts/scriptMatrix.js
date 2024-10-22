@@ -24,7 +24,14 @@ buttonNewGame.addEventListener('click', () => {
 });
 
 function createNewGeme(arr) {
+
   createGameField(arr, true);
+  let gameMatrix = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+  ];
 }
 
 function createGameField(arr, isFirstCall = false) {
