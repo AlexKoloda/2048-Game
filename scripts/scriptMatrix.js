@@ -1,14 +1,6 @@
 // TODO Придумать как реализовать анимации перехода между состояниями
 
-// Идеи для рандомайзера
-
-/* 
-2) в функции generateCell проверяем, если наша рандомная ячейка с 0, вставляем в нее число, 
-которое получаем из ф-и из пункта 3, а если число не 0, она вызывает себя
-
-3) Написать функцию которая возращает 2 или 4 с помощью рандомайзера
-
-4) в дополнению к пункту 2, после генерации ячейки, стоит проверить, если вообще дальше смысл играть */
+/* 4) в дополнению к пункту 2, после генерации ячейки, стоит проверить, если вообще дальше смысл играть */
 
 let gameContainer = document.querySelector(".game__container_iner");
 const buttonNewGame = document.querySelector(".header_button_new");
@@ -16,12 +8,17 @@ let isFirstCall = true;
 
 let gameMatrix = [
   [0, 0, 0, 0],
-  [4, 0, 2, 0],
+  [0, 0, 0, 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0],
 ];
 
 buttonNewGame.addEventListener("click", () => {
+  let newGame = confirm("Начать новую игру?");
+
+  if (!newGame) {
+    return;
+  }
   createNewGeme(gameMatrix);
 });
 
@@ -30,8 +27,8 @@ function createNewGeme(arr) {
 }
 
 function createGameField(arr, isFirstCall = false) {
-  if (isFirstCall) {
 
+  if (isFirstCall) {
     generateCell(gameMatrix);
     generateCell(gameMatrix);
   }
@@ -54,10 +51,10 @@ function createGameField(arr, isFirstCall = false) {
   });
 }
 
-function generateCell(arr) {                        // НЕ РАБОАТЕТ выбор ячейки! РАЗОБРАТЬСЯ!
+function generateCell(arr) {
   arr = gameMatrix;
-  const colIndex = Math.floor(Math.random() * 3);
-  const rowIndex = Math.floor(Math.random() * 3);
+  const colIndex = Math.floor(Math.random() * 4);
+  const rowIndex = Math.floor(Math.random() * 4);
 
   if (arr[colIndex][rowIndex] === 0) {
     const tailValue = generateTailValue();
@@ -83,24 +80,7 @@ function createNewGeme(arr) {
     generateCell();
     generateCell();
   }
-
   createGameField(gameMatrix);
 }
 
 createGameField(gameMatrix);
-
-/* 
-createGameField( gameMatrix, isFirstCall = false) */
-
-/* func example(arr) {
-  const colIndex= math.blablabla;
- const rowIndex = blablabla;
- 
-    if (arr[colIndex][rowIndex] === 0) {
-   const numberToFill = random2or4();
- 
-    arr[colIndex][rowIndex] = number; (или через inner) хз как у тебя там правильно по логике
- 
- 
- } else {example(arr)}
- } */
