@@ -19,7 +19,7 @@ buttonNewGame.addEventListener("click", () => {
   if (!newGame) {
     return;
   }
-  createNewGeme(gameMatrix);
+  createNewGame(gameMatrix);
 });
 
 function createNewGame(arr) {
