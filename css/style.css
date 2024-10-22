@@ -250,13 +250,19 @@ transform: scale(1.1);
 
 /* -- /TAIL CASE -- */
 
+
+.game__text {
+  font-size: 20px;
+  text-align: center;
+}
+
 /* -- FOOTER -- */
 .footer__main {
   background-color: rgb(221, 219, 212);
   font-size: 30px;
   color: rgba(0, 0, 0, 0.8);
   font-weight: 600;
-  padding: 40px 0;  
+  padding: 39px 0 0;  
   display: flex;
   justify-content: center;
 }
