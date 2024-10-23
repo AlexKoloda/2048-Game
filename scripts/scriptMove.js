@@ -168,18 +168,3 @@ function moveBackgroundRight() {
 // --!  /Функции для создания анимации !-- //
 
 
-function userCanMove(arr) {
- 
-    for (let row = 0; row < arr.length; row++) {
-      for (let col = 0; col < arr.length; col++) {
-
-        if (col !== arr.length - 1) {
-
-          if ( arr[col][row] !== 0 && !isEqual(arr[col][row], arr[col + 1][row]) )  {
-
-              console.log('STOP!')
-          }
-        }
-      }
-    }
-  }
