@@ -2,8 +2,8 @@
 
 /* 4) в дополнению к пункту 2, после генерации ячейки, стоит проверить, если вообще дальше смысл играть */
 
-let gameContainer = document.querySelector('.game__container_iner');
-const buttonNewGame = document.querySelector('.header_button_new');
+let gameContainer = document.querySelector(".game__container_iner");
+const buttonNewGame = document.querySelector(".header_button_new");
 let isFirstCall = true;
 
 let gameMatrix = [
@@ -13,8 +13,8 @@ let gameMatrix = [
   [0, 0, 0, 0],
 ];
 
-buttonNewGame.addEventListener('click', () => {
-  let newGame = confirm('Начать новую игру?');
+buttonNewGame.addEventListener("click", () => {
+  let newGame = confirm("Начать новую игру?");
 
   if (!newGame) {
     return;
@@ -28,7 +28,7 @@ function createNewGeme(arr) {
 }
 
 function createGameField(arr, isFirstCall = false) {
-  gameContainer.innerHTML = '';
+  gameContainer.innerHTML = "";
 
   if (isFirstCall) {
     generateCell(gameMatrix, true);
@@ -36,12 +36,12 @@ function createGameField(arr, isFirstCall = false) {
   }
 
   arr.flat().forEach((tailValue) => {
-    const cell = document.createElement('div');
-    const tail = document.createElement('div');
-    cell.className = 'game__cell';
+    const cell = document.createElement("div");
+    const tail = document.createElement("div");
+    cell.className = "game__cell";
 
     if (tailValue === 0) {
-      tail.className = 'game__tail';
+      tail.className = "game__tail";
       cell.append(tail);
     } else {
       tail.className = `game__tail tail_${tailValue}`;
@@ -60,7 +60,6 @@ function generateCell(arr, skipGameOverChecking = false) {
     const tailValue = generateTailValue();
     arr[colIndex][rowIndex] = tailValue;
 
-    
     if (!skipGameOverChecking) {
       checkGameOver(arr);
     }
@@ -80,7 +79,7 @@ function generateTailValue() {
 }
 
 function createNewGeme() {
-  gameContainer.innerHTML = '';
+  gameContainer.innerHTML = "";
 
   createGameField(gameMatrix, true);
 }
@@ -92,7 +91,7 @@ function checkGameOver(arr) {
 
   if (!hasZero) {
     isGameOver = true;
-    alert('game over');
+    alert("game over");
   }
 }
 

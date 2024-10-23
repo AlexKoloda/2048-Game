@@ -1,9 +1,9 @@
 // Найден баг про проверке условия когда 0 в центре, !ИСПРАВИТЬ!. А лучше уйти от for и переписать все на методы массивов если будет время. 21.10
-window.addEventListener('keydown', (event) => {
-  event.preventDefault()
+window.addEventListener("keydown", (event) => {
+  event.preventDefault();
 
   switch (event.key) {
-    case 'ArrowUp':
+    case "ArrowUp":
       if (!isGameOver) {
         moveUP(gameMatrix);
         generateCell(gameMatrix);
@@ -11,7 +11,7 @@ window.addEventListener('keydown', (event) => {
         break;
       }
 
-    case 'ArrowDown':
+    case "ArrowDown":
       if (!isGameOver) {
         moveDouwn(gameMatrix);
         generateCell(gameMatrix);
@@ -19,7 +19,7 @@ window.addEventListener('keydown', (event) => {
         break;
       }
 
-    case 'ArrowLeft':
+    case "ArrowLeft":
       if (!isGameOver) {
         moveLeft(gameMatrix);
         generateCell(gameMatrix);
@@ -27,7 +27,7 @@ window.addEventListener('keydown', (event) => {
         break;
       }
 
-    case 'ArrowRight':
+    case "ArrowRight":
       if (!isGameOver) {
         moveRight(gameMatrix);
         generateCell(gameMatrix);
@@ -40,17 +40,17 @@ window.addEventListener('keydown', (event) => {
 // TODO Переделать условия функции на !== и сделать рефакторинг кода
 
 function moveUP(arr) {
-  for (i = 0; i < 4; i++) {   
+  for (i = 0; i < 4; i++) {
     for (let row = 0; row < arr.length; row++) {
       for (let col = 0; col < arr.length; col++) {
-        if (col !== resArr.length-1) {
+        if (col !== arr.length - 1) {
           if (arr[col][row] === 0) {
             arr[col][row] = arr[col + 1][row];
             arr[col + 1][row] = 0;
           } else if (isEqual(arr[col][row], arr[col + 1][row])) {
             arr[col][row] = sumTailValue(arr[col][row], arr[col + 1][row]);
             arr[col + 1][row] = 0;
-          } 
+          }
         }
       }
     }
@@ -62,7 +62,7 @@ function moveDouwn(arr) {
   for (i = 0; i < 4; i++) {
     for (let row = 0; row < resArr.length; row++) {
       for (let col = 0; col < resArr.length; col++) {
-        if (col !== resArr.length-1) {
+        if (col !== resArr.length - 1) {
           if (resArr[col][row] === 0) {
             resArr[col][row] = arr[col + 1][row];
             resArr[col + 1][row] = 0;
@@ -77,14 +77,14 @@ function moveDouwn(arr) {
       }
     }
   }
- return resArr.reverse();
+  return resArr.reverse();
 }
 
 function moveLeft(arr) {
   for (i = 0; i < 4; i++) {
     for (let row = 0; row < arr.length; row++) {
       for (let col = 0; col < arr.length; col++) {
-        if (col !== arr.length-1) {
+        if (col !== arr.length - 1) {
           if (arr[row][col] === 0) {
             arr[row][col] = arr[row][col + 1];
             arr[row][col + 1] = 0;
@@ -103,7 +103,7 @@ function moveRight(arr) {
   for (i = 0; i < 4; i++) {
     for (let row = 0; row < arr.length; row++) {
       for (let col = 0; col < arr.length; col++) {
-        if (col !== arr.length-1) {
+        if (col !== arr.length - 1) {
           if (arr[row][col] === 0) {
             arr[row][col] = arr[row][col + 1];
             arr[row][col + 1] = 0;
