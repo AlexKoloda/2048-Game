@@ -1,4 +1,4 @@
-let body = document.querySelector("#body");
+let game__container = document.querySelector("#game__main");
 window.addEventListener("keydown", (event) => {
   event.preventDefault();
 
@@ -66,17 +66,24 @@ function moveDouwn(arr) {
   for (i = 0; i < 4; i++) {
     for (let row = 0; row < resArr.length; row++) {
       for (let col = 0; col < resArr.length; col++) {
+
         if (col !== resArr.length - 1) {
+
           if (resArr[col][row] === 0) {
             resArr[col][row] = arr[col + 1][row];
             resArr[col + 1][row] = 0;
+
           } else if (isEqual(resArr[col][row], arr[col + 1][row])) {
             resArr[col][row] = sumTailValue(
               resArr[col][row],
               arr[col + 1][row]
             );
             resArr[col + 1][row] = 0;
-          }
+
+          } else {             // Эксперементальная ветка
+            console.log('STOP')
+            console.log(arr);
+          } 
         }
       }
     }
@@ -128,30 +135,34 @@ function reverseMatrix(arr) {
   });
 }
 
+// --!  Функции для создания анимации !-- //
+
 function moveBackgroundDown() {
-  body.classList.add("body--down");
+  game__container.classList.add("body--down");
   setTimeout(() => {
-    body.classList.remove("body--down");
-  }, 100);
+    game__container.classList.remove("body--down");
+  }, 150);
 }
 
 function moveBackgroundUp() {
-  body.classList.add("body--up");
+  game__container.classList.add("body--up");
   setTimeout(() => {
-    body.classList.remove("body--up");
-  }, 100);
+    game__container.classList.remove("body--up");
+  }, 150);
 }
 
 function moveBackgroundLeft() {
-  body.classList.add("body--left");
+  game__container.classList.add("body--left");
   setTimeout(() => {
-    body.classList.remove("body--left");
-  }, 100);
+    game__container.classList.remove("body--left");
+  }, 150);
 }
 
 function moveBackgroundRight() {
-  body.classList.add("body--right");
+  game__container.classList.add("body--right");
   setTimeout(() => {
-    body.classList.remove("body--right");
-  }, 100);
+    game__container.classList.remove("body--right");
+  }, 150);
 }
+
+// --!  /Функции для создания анимации !-- //

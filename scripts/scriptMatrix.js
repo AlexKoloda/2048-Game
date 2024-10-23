@@ -58,7 +58,7 @@ function generateCell(arr, skipGameOverChecking = false) {
     arr[colIndex][rowIndex] = tailValue;
 
     if (!skipGameOverChecking) {
-      checkGameOver(arr);
+      checkEndGame(arr);
     }
   } else {
     generateCell(arr);
@@ -87,7 +87,7 @@ function createNewGame(arr) {
 
 let isGameOver = false;
 
-function checkGameOver(arr) {
+function checkEndGame(arr) {
   const hasZero = arr.flat().some((item) => item === 0);
   const hasFinal = arr.flat().some((item) => item === 2048);
 
