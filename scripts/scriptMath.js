@@ -3,10 +3,6 @@ let bestScoreDisplay = document.querySelector(".best__value");
 
 let score = 0;
 
-function isEqual(a, b) {
-  
-  return a === b;
-}
 
 function sumTailValue(a, b) {
   let res = a + b;

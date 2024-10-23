@@ -1,13 +1,9 @@
-// TODO Придумать как реализовать анимации перехода между состояниями
-
-// Придумать условие для генерации ячеек
-
 let gameContainer = document.querySelector(".game__container_iner");
 const buttonNewGame = document.querySelector(".header_button_new");
 let isFirstCall = true;
 
 let gameMatrix = [
-  [2, 0, 2, 0],
+  [0, 0, 0, 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0],
@@ -49,7 +45,7 @@ function createGameField(arr, isFirstCall = false) {
 }
 
 function generateCell(arr, skipGameOverChecking = false) {
-  arr = gameMatrix;
+  
   const colIndex = Math.floor(Math.random() * 4);
   const rowIndex = Math.floor(Math.random() * 4);
 
@@ -61,7 +57,7 @@ function generateCell(arr, skipGameOverChecking = false) {
       checkEndGame(arr);
     }
   } else {
-    generateCell(arr);
+    generateCell(gameMatrix);
   }
 }
 
