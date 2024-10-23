@@ -23,9 +23,6 @@ buttonNewGame.addEventListener("click", () => {
   createNewGeme(gameMatrix);
 });
 
-function createNewGeme(arr) {
-  createGameField(arr, true);
-}
 
 function createGameField(arr, isFirstCall = false) {
   gameContainer.innerHTML = "";
@@ -78,9 +75,13 @@ function generateTailValue() {
   }
 }
 
-function createNewGeme() {
-  gameContainer.innerHTML = "";
-
+function createNewGeme(arr) {
+  gameMatrix = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+  ];
   createGameField(gameMatrix, true);
 }
 

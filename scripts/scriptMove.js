@@ -5,7 +5,7 @@ window.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "ArrowUp":
       if (!isGameOver) {
-        moveUP(gameMatrix);
+        moveUP(gameMatrix);  
         generateCell(gameMatrix);
         createGameField(gameMatrix);
         break;
@@ -123,3 +123,5 @@ function reverseMatrix(arr) {
     return item.reverse();
   });
 }
+
+
