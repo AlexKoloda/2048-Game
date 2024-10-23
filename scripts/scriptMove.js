@@ -1,6 +1,5 @@
 // Найден баг про проверке условия когда 0 в центре, !ИСПРАВИТЬ!. А лучше уйти от for и переписать все на методы массивов если будет время. 21.10
 window.addEventListener('keydown', (event) => {
-
   event.preventDefault()
 
   switch (event.key) {
@@ -41,17 +40,17 @@ window.addEventListener('keydown', (event) => {
 // TODO Переделать условия функции на !== и сделать рефакторинг кода
 
 function moveUP(arr) {
-  for (i = 0; i < 4; i++) {
+  for (i = 0; i < 4; i++) {   
     for (let row = 0; row < arr.length; row++) {
       for (let col = 0; col < arr.length; col++) {
-        if (col !== 3) {
+        if (col !== resArr.length-1) {
           if (arr[col][row] === 0) {
             arr[col][row] = arr[col + 1][row];
             arr[col + 1][row] = 0;
           } else if (isEqual(arr[col][row], arr[col + 1][row])) {
             arr[col][row] = sumTailValue(arr[col][row], arr[col + 1][row]);
             arr[col + 1][row] = 0;
-          }
+          } 
         }
       }
     }
