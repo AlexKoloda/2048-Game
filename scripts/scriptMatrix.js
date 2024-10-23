@@ -20,7 +20,7 @@ buttonNewGame.addEventListener("click", () => {
     return;
   }
 
-  createNewGeme(gameMatrix);
+  createNewGame(gameMatrix);
 });
 
 
@@ -75,7 +75,7 @@ function generateTailValue() {
   }
 }
 
-function createNewGeme(arr) {
+function createNewGame(arr) {
   gameMatrix = [
     [0, 0, 0, 0],
     [0, 0, 0, 0],
@@ -89,10 +89,16 @@ let isGameOver = false;
 
 function checkGameOver(arr) {
   const hasZero = arr.flat().some((item) => item === 0);
+  const hasFinal = arr.flat().some((item) => item === 2048);
 
   if (!hasZero) {
     isGameOver = true;
-    alert("game over");
+    alert(`Конец игры! Ваш счет: ${score} `);
+  }
+
+  if (hasFinal) {
+    createNewGame(gameMatrix);
+    alert(`Победа! Ваш счет: ${score}`);
   }
 }
 

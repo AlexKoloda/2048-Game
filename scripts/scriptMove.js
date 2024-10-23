@@ -1,11 +1,13 @@
-// Найден баг про проверке условия когда 0 в центре, !ИСПРАВИТЬ!. А лучше уйти от for и переписать все на методы массивов если будет время. 21.10
+
+let body = document.querySelector('#body');
 window.addEventListener("keydown", (event) => {
   event.preventDefault();
 
   switch (event.key) {
     case "ArrowUp":
       if (!isGameOver) {
-        moveUP(gameMatrix);  
+        moveBackgroundUp();
+        moveUp(gameMatrix);  
         generateCell(gameMatrix);
         createGameField(gameMatrix);
         break;
@@ -13,6 +15,7 @@ window.addEventListener("keydown", (event) => {
 
     case "ArrowDown":
       if (!isGameOver) {
+        moveBackgroundDown();
         moveDouwn(gameMatrix);
         generateCell(gameMatrix);
         createGameField(gameMatrix);
@@ -21,6 +24,7 @@ window.addEventListener("keydown", (event) => {
 
     case "ArrowLeft":
       if (!isGameOver) {
+        moveBackgroundLeft();
         moveLeft(gameMatrix);
         generateCell(gameMatrix);
         createGameField(gameMatrix);
@@ -29,6 +33,7 @@ window.addEventListener("keydown", (event) => {
 
     case "ArrowRight":
       if (!isGameOver) {
+        moveBackgroundRight();
         moveRight(gameMatrix);
         generateCell(gameMatrix);
         createGameField(gameMatrix);
@@ -39,7 +44,7 @@ window.addEventListener("keydown", (event) => {
 
 // TODO Переделать условия функции на !== и сделать рефакторинг кода
 
-function moveUP(arr) {
+function moveUp(arr) {
   for (i = 0; i < 4; i++) {
     for (let row = 0; row < arr.length; row++) {
       for (let col = 0; col < arr.length; col++) {
@@ -50,7 +55,7 @@ function moveUP(arr) {
           } else if (isEqual(arr[col][row], arr[col + 1][row])) {
             arr[col][row] = sumTailValue(arr[col][row], arr[col + 1][row]);
             arr[col + 1][row] = 0;
-          }
+          } 
         }
       }
     }
@@ -123,5 +128,48 @@ function reverseMatrix(arr) {
     return item.reverse();
   });
 }
+
+function moveBackgroundDown() {  // TODO Сделать анимацию движения позже
+
+  
+  body.classList.add('body--down');
+  setTimeout( () => {
+  body.classList.remove('body--down')
+  }, 100)
+ 
+}
+
+function moveBackgroundUp() {  
+
+  body.classList.add('body--up');
+  setTimeout( () => {
+  body.classList.remove('body--up')
+  }, 100)
+ 
+ 
+}
+
+
+function moveBackgroundLeft() {  
+
+  body.classList.add('body--left');
+  setTimeout( () => {
+  body.classList.remove('body--left')
+  }, 100)
+ 
+ 
+}
+
+
+function moveBackgroundRight() {  
+  
+  body.classList.add('body--right');
+  setTimeout( () => {
+  body.classList.remove('body--right')
+  }, 100)
+ 
+ 
+}
+
 
 
