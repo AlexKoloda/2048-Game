@@ -120,6 +120,22 @@ h2 {
   border: 2px solid rgba(0, 0, 0, 0.4);
   box-shadow: rgb(0 0 0 / 19%) 0px 0px 2px 2px inset;
 }
+
+/* .game__cell--up {
+  transform: translate(0, -5px);
+}
+
+.game__cell--down {
+  transform: translate(0, 5px);               // Анимации ячеек, можно попробовать добавить при нажатии на стрелки при помощи перебора коллекции. 
+}
+.game__cell--right {
+  transform: translate(5px, 0px);
+}
+
+.game__cell--left {
+  transform: translate(-5px, 0px); 
+}
+  */
 /* -- /GAME -- */
 
 .game__tail {
@@ -165,7 +181,6 @@ h2 {
 .tail_4::after {
   transition: 0.2s;
   content: "4";
-  transform: scale(1.1);
 }
 
 .tail_8 {

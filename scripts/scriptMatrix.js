@@ -1,13 +1,13 @@
 // TODO Придумать как реализовать анимации перехода между состояниями
 
-/* 4) в дополнению к пункту 2, после генерации ячейки, стоит проверить, если вообще дальше смысл играть */
+// Придумать условие для генерации ячеек
 
 let gameContainer = document.querySelector(".game__container_iner");
 const buttonNewGame = document.querySelector(".header_button_new");
 let isFirstCall = true;
 
 let gameMatrix = [
-  [0, 0, 0, 0],
+  [2, 0, 2, 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0],
@@ -54,16 +54,21 @@ function generateCell(arr, skipGameOverChecking = false) {
   const colIndex = Math.floor(Math.random() * 4);
   const rowIndex = Math.floor(Math.random() * 4);
 
-  if (arr[colIndex][rowIndex] === 0) {
-    const tailValue = generateTailValue();
-    arr[colIndex][rowIndex] = tailValue;
+  console.log(checkForAvailableMoves(gameMatrix))
 
-    if (!skipGameOverChecking) {
-      checkEndGame(arr);
-    }
-  } else {
-    generateCell(arr);
-  }
+  // if (arr[colIndex][rowIndex] === 0) {
+
+  //   if(checkForAvailableMoves(gameMatrix)) return generateCell(arr);
+
+  //   const tailValue = generateTailValue();
+  //   arr[colIndex][rowIndex] = tailValue;
+
+  //   if (!skipGameOverChecking) {
+  //     checkEndGame(arr);
+  //   }
+    
+  // }  
+
 }
 
 function generateTailValue() {
@@ -95,6 +100,8 @@ function checkEndGame(arr) {
   const hasZero = arr.flat().some((item) => item === 0);
   const hasFinal = arr.flat().some((item) => item === 2048);
 
+ 
+
   if (!hasZero) {
     isGameOver = true;
     alert(`Конец игры! Ваш счет: ${score} `);
@@ -107,3 +114,21 @@ function checkEndGame(arr) {
 }
 
 createGameField(gameMatrix);
+
+
+
+function checkForAvailableMoves(arr) {
+  console.log(arr)
+  for (let col = 0; col < arr.length; col++) {
+    for (let row = 0; row < arr.length; row++) {
+      if (col !== arr.length - 1) {
+        if (isEqual(arr[col][row], arr[col + 1][row])) {
+          console.log('work')
+        }
+      }  
+    }
+  }
+return true;
+}
+
+checkForAvailableMoves(gameMatrix)

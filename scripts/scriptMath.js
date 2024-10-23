@@ -4,6 +4,7 @@ let bestScoreDisplay = document.querySelector(".best__value");
 let score = 0;
 
 function isEqual(a, b) {
+  
   return a === b;
 }
 
@@ -20,7 +21,6 @@ function getBestScore(score) {
   if (score < +localStorage.getItem("score")) {
     return;
   }
-  console.log(score, +localStorage.getItem("score"));
   bestScoreDisplay.textContent = score;
   saveBestScore();
   showBestScore();
