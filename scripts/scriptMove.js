@@ -1,5 +1,4 @@
-
-let body = document.querySelector('#body');
+let body = document.querySelector("#body");
 window.addEventListener("keydown", (event) => {
   event.preventDefault();
 
@@ -7,7 +6,7 @@ window.addEventListener("keydown", (event) => {
     case "ArrowUp":
       if (!isGameOver) {
         moveBackgroundUp();
-        moveUp(gameMatrix);  
+        moveUp(gameMatrix);
         generateCell(gameMatrix);
         createGameField(gameMatrix);
         break;
@@ -55,7 +54,7 @@ function moveUp(arr) {
           } else if (isEqual(arr[col][row], arr[col + 1][row])) {
             arr[col][row] = sumTailValue(arr[col][row], arr[col + 1][row]);
             arr[col + 1][row] = 0;
-          } 
+          }
         }
       }
     }
@@ -129,47 +128,30 @@ function reverseMatrix(arr) {
   });
 }
 
-function moveBackgroundDown() {  // TODO Сделать анимацию движения позже
-
-  
-  body.classList.add('body--down');
-  setTimeout( () => {
-  body.classList.remove('body--down')
-  }, 100)
- 
+function moveBackgroundDown() {
+  body.classList.add("body--down");
+  setTimeout(() => {
+    body.classList.remove("body--down");
+  }, 100);
 }
 
-function moveBackgroundUp() {  
-
-  body.classList.add('body--up');
-  setTimeout( () => {
-  body.classList.remove('body--up')
-  }, 100)
- 
- 
+function moveBackgroundUp() {
+  body.classList.add("body--up");
+  setTimeout(() => {
+    body.classList.remove("body--up");
+  }, 100);
 }
 
-
-function moveBackgroundLeft() {  
-
-  body.classList.add('body--left');
-  setTimeout( () => {
-  body.classList.remove('body--left')
-  }, 100)
- 
- 
+function moveBackgroundLeft() {
+  body.classList.add("body--left");
+  setTimeout(() => {
+    body.classList.remove("body--left");
+  }, 100);
 }
 
-
-function moveBackgroundRight() {  
-  
-  body.classList.add('body--right');
-  setTimeout( () => {
-  body.classList.remove('body--right')
-  }, 100)
- 
- 
+function moveBackgroundRight() {
+  body.classList.add("body--right");
+  setTimeout(() => {
+    body.classList.remove("body--right");
+  }, 100);
 }
-
-
-
