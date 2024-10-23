@@ -1,5 +1,8 @@
 // Найден баг про проверке условия когда 0 в центре, !ИСПРАВИТЬ!. А лучше уйти от for и переписать все на методы массивов если будет время. 21.10
 window.addEventListener('keydown', (event) => {
+
+  event.preventDefault()
+
   switch (event.key) {
     case 'ArrowUp':
       if (!isGameOver) {

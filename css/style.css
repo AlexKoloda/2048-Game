@@ -5,7 +5,10 @@ body {
   font-family: "Londrina Sketch", sans-serif;
   font-weight: 400;
   font-style: normal;
-}
+    overflow-x: hidden; 
+    overflow-y: hidden; 
+  }
+
 
 p {
   font-family: "Londrina Solid", sans-serif;
@@ -262,7 +265,7 @@ transform: scale(1.1);
   font-size: 30px;
   color: rgba(0, 0, 0, 0.8);
   font-weight: 600;
-  padding: 39px 0 0;  
+  padding: 20px 0 20px;  
   display: flex;
   justify-content: center;
 }
