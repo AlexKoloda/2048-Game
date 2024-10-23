@@ -1,17 +1,48 @@
 
 let scoreDisplay = document.querySelector(".score__value");
-let score = '0';
-
 let bestScoreDisplay = document.querySelector(".best__value");
-scoreDisplay.textContent = 0;
-bestScoreDisplay.innerHTML += score;
+
+let score = 0;
+
+
 
 
 function isEqual(a, b) {
   return a === b;
 }
 
+
+
 function sumTailValue(a, b) {
-    return  a + b;
+    let res = a + b;  
+    score += res;
+    
+    getBestScore(score);  
+    scoreDisplay.textContent = score;   
+    return res;    
 }
 
+
+function getBestScore(score) {
+
+  if (score < +localStorage.getItem('score')) {
+     return;
+  }
+  console.log(score, +localStorage.getItem('score'))
+  bestScoreDisplay.textContent = score; 
+  saveBestScore(); 
+  showBestScore();  
+
+}
+
+
+function saveBestScore() {
+  localStorage.setItem('score', bestScoreDisplay.textContent);
+}
+
+function showBestScore() {
+  bestScoreDisplay.textContent = localStorage.getItem('score');
+}
+
+
+showBestScore();  

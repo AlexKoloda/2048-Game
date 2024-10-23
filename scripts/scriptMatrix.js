@@ -26,6 +26,7 @@ buttonNewGame.addEventListener("click", () => {
 
 function createGameField(arr, isFirstCall = false) {
   gameContainer.innerHTML = "";
+  scoreDisplay.textContent = 0;
 
   if (isFirstCall) {
     generateCell(gameMatrix, true);
@@ -83,6 +84,9 @@ function createNewGame(arr) {
     [0, 0, 0, 0],
   ];
   createGameField(gameMatrix, true);
+  score = 0;
+  scoreDisplay.textContent = score;
+  
 }
 
 let isGameOver = false;
