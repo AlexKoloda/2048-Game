@@ -63,7 +63,7 @@ function moveDouwn(arr) {
   for (i = 0; i < 4; i++) {
     for (let row = 0; row < resArr.length; row++) {
       for (let col = 0; col < resArr.length; col++) {
-        if (col !== 3) {
+        if (col !== resArr.length-1) {
           if (resArr[col][row] === 0) {
             resArr[col][row] = arr[col + 1][row];
             resArr[col + 1][row] = 0;
@@ -85,7 +85,7 @@ function moveLeft(arr) {
   for (i = 0; i < 4; i++) {
     for (let row = 0; row < arr.length; row++) {
       for (let col = 0; col < arr.length; col++) {
-        if (col !== 3) {
+        if (col !== arr.length-1) {
           if (arr[row][col] === 0) {
             arr[row][col] = arr[row][col + 1];
             arr[row][col + 1] = 0;
@@ -104,7 +104,7 @@ function moveRight(arr) {
   for (i = 0; i < 4; i++) {
     for (let row = 0; row < arr.length; row++) {
       for (let col = 0; col < arr.length; col++) {
-        if (col !== 3) {
+        if (col !== arr.length-1) {
           if (arr[row][col] === 0) {
             arr[row][col] = arr[row][col + 1];
             arr[row][col + 1] = 0;
