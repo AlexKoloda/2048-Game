@@ -330,8 +330,16 @@ h2 {
   }
 
   .game__cell {
-    padding: 40px;
+    padding: 30px;
     border: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .footer__main {
+visibility: hidden;
+  }
+
+  .game__text {
+    visibility: hidden;
   }
 }
 
