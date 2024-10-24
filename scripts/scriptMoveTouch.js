@@ -22,7 +22,7 @@ document.addEventListener("touchmove", (e) => {
 
       case (directionY > 0 && directionX === 0):
         if (!isGameOver) {
-          canMove = moveDouwn(gameMatrix);
+          canMove = moveDown(gameMatrix);
 
           if (canMove) {
             generateCell(gameMatrix);

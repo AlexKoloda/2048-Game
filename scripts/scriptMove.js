@@ -8,8 +8,7 @@ window.addEventListener("keydown", (event) => {
       if (!isGameOver) {
         const canMove = moveUp(gameMatrix);
       
-        if (canMove) {
-          
+        if (canMove) {          
           generateCell(gameMatrix);
         }
         createGameField(gameMatrix);
@@ -30,6 +29,7 @@ window.addEventListener("keydown", (event) => {
       case 'ArrowLeft':
         if (!isGameOver) {
           const canMove = moveLeft(gameMatrix);
+
           if (canMove) {
             generateCell(gameMatrix);
           }
@@ -40,7 +40,8 @@ window.addEventListener("keydown", (event) => {
       case 'ArrowRight':
         if (!isGameOver) {
           const canMove = moveRight(gameMatrix);
-          if (canMove) {
+
+          if (canMove) {             
             generateCell(gameMatrix);
           }
           createGameField(gameMatrix);
@@ -65,10 +66,8 @@ function moveUp(arr) {
             nextCell.value = 0;
 
           } else if (currentCell.value === nextCell.value && !currentCell.wasSum ) {
-            console.log(currentCell.wasSum);
-            currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell, nextCell);
+            currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell);
             nextCell.value = 0;
-            /* currentCell.wasSum = true; */
             break;
           }
         }
@@ -95,9 +94,8 @@ function moveDouwn(arr) {
             nextCell.value = 0;
 
           } else if (currentCell.value === nextCell.value && !currentCell.wasSum) {
-            currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell, nextCell);
+            currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell);
             nextCell.value = 0;
-            /* currentCell.wasSum = true; */
             break;
           }
         }
@@ -125,10 +123,9 @@ function moveLeft(arr) {
             nextCell.value = 0;
 
           } else if (currentCell.value === nextCell.value && !currentCell.wasSum) {
-            currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell, nextCell );
+            currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell);
             nextCell.value = 0;
-           
-          
+            break;          
           }
           
         }
@@ -156,7 +153,7 @@ function moveRight(arr) {
             nextCell.value = 0;
 
           } else if (currentCell.value === nextCell.value && !currentCell.wasSum) {
-            currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell, nextCell);
+            currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell);
             nextCell.value = 0;
             break;
           }

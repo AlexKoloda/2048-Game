@@ -4,7 +4,7 @@ let bestScoreDisplay = document.querySelector(".best__value");
 let score = 0;
 
 
-function sumTailValue(a, b, cell, nextcell) {
+function sumTailValue(a, b, cell) {
 
     
     let res = a + b;  
@@ -12,8 +12,6 @@ function sumTailValue(a, b, cell, nextcell) {
     getBestScore(score);  
     scoreDisplay.textContent = score;   */
     cell.wasSum = true;
-    nextcell.wasSum = true;
-    console.log(cell.wasSum)
     return res;    
 }
 

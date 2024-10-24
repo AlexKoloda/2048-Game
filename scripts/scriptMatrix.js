@@ -21,7 +21,7 @@ let gameMatrix = [
   [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
 ];
 
-
+console.log(gameMatrix[0][0].value)
 
 function createGameField(arr, isFirstCall = false) {
   gameContainer.innerHTML = "";
@@ -45,6 +45,8 @@ function createGameField(arr, isFirstCall = false) {
       cell.append(tail);
     }
     gameContainer.append(cell);
+    gameTail.wasSum = false;
+    console.log(gameTail.wasSum)
   });
 }
 
