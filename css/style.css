@@ -335,6 +335,10 @@ h2 {
     border: 1px solid rgba(0, 0, 0, 0.4);
   }
 
+  .game__tail {
+    font-size: 25px;
+  }
+
   .footer__main {
 visibility: hidden;
   }

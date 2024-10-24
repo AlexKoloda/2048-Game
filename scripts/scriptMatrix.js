@@ -6,10 +6,10 @@ const buttonNewGame = document.querySelector(".header_button_new");
 let isFirstCall = true;
 
 let gameMatrix = [  
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
+  [2048, 512, 256, 128],
+  [64, 0, 0, 128],
+  [64, 32, 32, 64],
+  [4, 2, 2, 4],
 ];
 
 buttonNewGame.addEventListener("click", () => {
