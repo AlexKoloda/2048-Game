@@ -15,7 +15,7 @@ let gameTail = {
 }
 
 let gameMatrix = [
-  [{value: 4, wasSum: false,}, {value: 4, wasSum: false,}, {value: 4, wasSum: false,}, {value: 4, wasSum: false,}],
+  [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
   [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
   [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
   [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
