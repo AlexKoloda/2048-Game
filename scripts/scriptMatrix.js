@@ -6,8 +6,8 @@ const buttonNewGame = document.querySelector(".header_button_new");
 let isFirstCall = true;
 
 let gameMatrix = [  
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
+  [0, 4, 0, 0],
+  [0, 4, 0, 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0],
 ];

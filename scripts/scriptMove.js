@@ -10,7 +10,7 @@ window.addEventListener("keydown", (event) => {
         canMove = moveUp(gameMatrix);        
 
         if (canMove) {
-          moveBackgroundUp()
+         /*  moveBackgroundUp() */
           generateCell(gameMatrix); 
         }
         createGameField(gameMatrix);
@@ -22,7 +22,7 @@ window.addEventListener("keydown", (event) => {
         canMove = moveDouwn(gameMatrix);
 
         if (canMove) {
-          moveBackgroundDown()
+         /*  moveBackgroundDown() */
           generateCell(gameMatrix);
         }
         createGameField(gameMatrix);
@@ -33,7 +33,7 @@ window.addEventListener("keydown", (event) => {
       if (!isGameOver) {
         canMove = moveLeft(gameMatrix);
         if (canMove) {
-          moveBackgroundLeft()
+         /*  moveBackgroundLeft() */
           generateCell(gameMatrix);
         }
         createGameField(gameMatrix);
@@ -42,7 +42,7 @@ window.addEventListener("keydown", (event) => {
 
     case "ArrowRight":
       if (!isGameOver) {
-        moveBackgroundRight()
+       /*  moveBackgroundRight() */
         canMove = moveRight(gameMatrix);
         if (canMove) {
           generateCell(gameMatrix);
@@ -82,6 +82,7 @@ function moveUp(arr) {
           } else if ( arr[col][row] === arr[col + 1][row] ) {
             arr[col][row] = sumTailValue(arr[col][row], arr[col + 1][row]);
             arr[col + 1][row] = 0;
+            break;
           }
         }
       }
@@ -108,6 +109,7 @@ function moveDouwn(arr) {
               arr[col + 1][row]
             );
             resArr[col + 1][row] = 0;
+            break;
           }
         }
       }
@@ -135,6 +137,7 @@ function moveLeft(arr) {
           } else if (arr[row][col] === arr[row][col + 1]) {
             arr[row][col] = sumTailValue(arr[row][col], arr[row][col + 1]);
             arr[row][col + 1] = 0;
+            break;
           }
         }
       }
@@ -162,6 +165,7 @@ function moveRight(arr) {
           } else if (arr[row][col] === arr[row][col + 1]) {
             arr[row][col] = sumTailValue(arr[row][col], arr[row][col + 1]);
             arr[row][col + 1] = 0;
+            break;  
           }
         }
       }
@@ -174,7 +178,7 @@ function moveRight(arr) {
 
 // --!  Функции для создания анимации !-- //
 
-function moveBackgroundDown() {
+/* function moveBackgroundDown() {
   game__container.classList.add("body--down");
   setTimeout(() => {
     game__container.classList.remove("body--down");
@@ -200,7 +204,7 @@ function moveBackgroundRight() {
   setTimeout(() => {
     game__container.classList.remove("body--right");
   }, 150);
-}
+} */
 
 function reverseMatrix(arr) {
   arr.map((item) => {

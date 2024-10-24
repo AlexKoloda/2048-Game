@@ -21,7 +21,7 @@ document.addEventListener("touchmove", (e) => {
             canMove = moveUp(gameMatrix);        
     
             if (canMove) {
-              /* moveBackgroundUp() */
+              moveBackgroundUp()
               generateCell(gameMatrix); 
             }
             createGameField(gameMatrix);
@@ -33,7 +33,7 @@ document.addEventListener("touchmove", (e) => {
             canMove = moveDouwn(gameMatrix);
     
             if (canMove) {
-             /*  moveBackgroundDown() */
+              moveBackgroundDown()
               generateCell(gameMatrix);
             }
             createGameField(gameMatrix);
@@ -44,7 +44,7 @@ document.addEventListener("touchmove", (e) => {
           if (!isGameOver) {
             canMove = moveLeft(gameMatrix);
             if (canMove) {
-             /*  moveBackgroundLeft() */
+              moveBackgroundLeft()
               generateCell(gameMatrix);
             }
             createGameField(gameMatrix);
@@ -53,7 +53,7 @@ document.addEventListener("touchmove", (e) => {
     
         case (directionX > 0):
           if (!isGameOver) {
-           /*  moveBackgroundRight() */
+            moveBackgroundRight()
             canMove = moveRight(gameMatrix);
             if (canMove) {
               generateCell(gameMatrix);
