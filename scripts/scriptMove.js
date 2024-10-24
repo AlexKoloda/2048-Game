@@ -1,87 +1,74 @@
 const game__container = document.querySelector("#game__main");
-let canMove;
-window.addEventListener("keydown", (event) => {
 
+
+window.addEventListener("keydown", (event) => {
   switch (event.key) {
 
-    case "ArrowUp":
+    case 'ArrowUp':
+      if (!isGameOver) {
+        const canMove = moveUp(gameMatrix);
       
-      if (!isGameOver) {
-        canMove = moveUp(gameMatrix);        
-
         if (canMove) {
-         /*  moveBackgroundUp() */
-          generateCell(gameMatrix); 
-        }
-        createGameField(gameMatrix);
-        break;
-      }
-
-    case "ArrowDown":
-      if (!isGameOver) {
-        canMove = moveDouwn(gameMatrix);
-
-        if (canMove) {
-         /*  moveBackgroundDown() */
+          
           generateCell(gameMatrix);
         }
         createGameField(gameMatrix);
         break;
       }
 
-    case "ArrowLeft":
-      if (!isGameOver) {
-        canMove = moveLeft(gameMatrix);
-        if (canMove) {
-         /*  moveBackgroundLeft() */
-          generateCell(gameMatrix);
+      case 'ArrowDown':
+        if (!isGameOver) {
+          const canMove = moveDouwn(gameMatrix);
+  
+          if (canMove) {
+            generateCell(gameMatrix);
+          }
+          createGameField(gameMatrix);
+          break;
         }
-        createGameField(gameMatrix);
-        break;
-      }
-
-    case "ArrowRight":
-      if (!isGameOver) {
-       /*  moveBackgroundRight() */
-        canMove = moveRight(gameMatrix);
-        if (canMove) {
-          generateCell(gameMatrix);
+  
+      case 'ArrowLeft':
+        if (!isGameOver) {
+          const canMove = moveLeft(gameMatrix);
+          if (canMove) {
+            generateCell(gameMatrix);
+          }
+          createGameField(gameMatrix);
+          break;
         }
-        createGameField(gameMatrix);
-        break;
+  
+      case 'ArrowRight':
+        if (!isGameOver) {
+          const canMove = moveRight(gameMatrix);
+          if (canMove) {
+            generateCell(gameMatrix);
+          }
+          createGameField(gameMatrix);
+          break;
       }
   }
 });
-
-function areMatricesEqual(matrix1, matrix2) {
-  for (let i = 0; i < matrix1.length; i++) {
-    for (let j = 0; j < matrix1[i].length; j++) {
-      if (matrix1[i][j] !== matrix2[i][j]) {
-        return false;
-      }
-    }
-  }
-  return true;
-}
 
 function moveUp(arr) {
   const oldMatrix = JSON.parse(JSON.stringify(arr));
   const size = arr.length;
 
-  for (i = 0; i < 4; i++) {
+  for (let i = 0; i < 4; i++) {
     for (let row = 0; row < size; row++) {
       for (let col = 0; col < size; col++) {
-
         if (col !== size - 1) {
+          let currentCell = arr[col][row];
+          let nextCell = arr[col + 1][row];
 
-          if (arr[col][row] === 0) {
-            arr[col][row] = arr[col + 1][row];
-            arr[col + 1][row] = 0;
-            canMove = true;
+          if (currentCell.value === 0) {
+            currentCell.value = nextCell.value;
+            nextCell.value = 0;
 
-          } else if ( arr[col][row] === arr[col + 1][row] ) {
-            arr[col][row] = sumTailValue(arr[col][row], arr[col + 1][row]);
-            arr[col + 1][row] = 0;
+          } else if (currentCell.value === nextCell.value && !currentCell.wasSum ) {
+            console.log(currentCell.wasSum);
+            currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell, nextCell);
+            nextCell.value = 0;
+            /* currentCell.wasSum = true; */
             break;
           }
         }
@@ -96,19 +83,21 @@ function moveDouwn(arr) {
   let resArr = arr.reverse();
   const size = resArr.length;
 
-  for (i = 0; i < 4; i++) {
+  for (let i = 0; i < 4; i++) {
     for (let row = 0; row < size; row++) {
       for (let col = 0; col < size; col++) {
         if (col !== size - 1) {
-          if (resArr[col][row] === 0) {
-            resArr[col][row] = arr[col + 1][row];
-            resArr[col + 1][row] = 0;
-          } else if (resArr[col][row] === arr[col + 1][row]) {
-            resArr[col][row] = sumTailValue(
-              resArr[col][row],
-              arr[col + 1][row]
-            );
-            resArr[col + 1][row] = 0;
+          let currentCell = resArr[col][row];
+          let nextCell = resArr[col + 1][row];
+
+          if (currentCell.value === 0) {
+            currentCell.value = nextCell.value;
+            nextCell.value = 0;
+
+          } else if (currentCell.value === nextCell.value && !currentCell.wasSum) {
+            currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell, nextCell);
+            nextCell.value = 0;
+            /* currentCell.wasSum = true; */
             break;
           }
         }
@@ -124,21 +113,24 @@ function moveLeft(arr) {
   const oldMatrix = JSON.parse(JSON.stringify(arr));
   const size = arr.length;
 
-  for (i = 0; i < 4; i++) {
+  for (let i = 0; i < 4; i++) {
     for (let row = 0; row < size; row++) {
       for (let col = 0; col < size; col++) {
+        if (col !== size - 1) {
+          let currentCell = arr[row][col];
+          let nextCell = arr[row][col + 1];
 
-        if (col !== size - 1 ) {
+          if (currentCell.value === 0) {
+            currentCell.value = nextCell.value;
+            nextCell.value = 0;
 
-          if (arr[row][col] === 0) {
-            arr[row][col] = arr[row][col + 1];
-            arr[row][col + 1] = 0;
-
-          } else if (arr[row][col] === arr[row][col + 1]) {
-            arr[row][col] = sumTailValue(arr[row][col], arr[row][col + 1]);
-            arr[row][col + 1] = 0;
-            break;
+          } else if (currentCell.value === nextCell.value && !currentCell.wasSum) {
+            currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell, nextCell );
+            nextCell.value = 0;
+           
+          
           }
+          
         }
       }
     }
@@ -150,22 +142,23 @@ function moveLeft(arr) {
 function moveRight(arr) {
   const oldMatrix = JSON.parse(JSON.stringify(arr));
   const size = arr.length;
-
   reverseMatrix(arr);
-  for (i = 0; i < 4; i++) {
+
+  for (let i = 0; i < 4; i++) {
     for (let row = 0; row < size; row++) {
       for (let col = 0; col < size; col++) {
-
         if (col !== size - 1) {
+          let currentCell = arr[row][col];
+          let nextCell = arr[row][col + 1];
 
-          if (arr[row][col] === 0) {
-            arr[row][col] = arr[row][col + 1];
-            arr[row][col + 1] = 0;
+          if (currentCell.value === 0) {
+            currentCell.value = nextCell.value;
+            nextCell.value = 0;
 
-          } else if (arr[row][col] === arr[row][col + 1]) {
-            arr[row][col] = sumTailValue(arr[row][col], arr[row][col + 1]);
-            arr[row][col + 1] = 0;
-            break;  
+          } else if (currentCell.value === nextCell.value && !currentCell.wasSum) {
+            currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell, nextCell);
+            nextCell.value = 0;
+            break;
           }
         }
       }
@@ -210,4 +203,17 @@ function reverseMatrix(arr) {
   arr.map((item) => {
     return item.reverse();
   });
+}
+
+function areMatricesEqual(matrix1, matrix2) {
+
+
+  for (let i = 0; i < matrix1.length; i++) {
+    for (let j = 0; j < matrix1[i].length; j++) {
+      if (matrix1[i][j].value !== matrix2[i][j].value) {
+        return false;
+      }
+    }
+  }
+  return true;
 }
