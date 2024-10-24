@@ -5,10 +5,12 @@ document.addEventListener("touchstart", (e) => {
 });
 document.addEventListener("touchmove", (e) => {
     if (event) {
-     let directionY = e.touches[0].pageY - event.touches[0].pageY;
-     let directionX = e.touches[0].pageX - event.touches[0].pageX;
+     let directionY = Math.floor(  e.touches[0].pageY - event.touches[0].pageY);
+     let directionX = Math.floor( e.touches[0].pageX - event.touches[0].pageX) ;
      
-    
+     console.log(directionX)
+     
+
      
     
      switch (true) {
@@ -19,7 +21,7 @@ document.addEventListener("touchmove", (e) => {
             canMove = moveUp(gameMatrix);        
     
             if (canMove) {
-              moveBackgroundUp()
+              /* moveBackgroundUp() */
               generateCell(gameMatrix); 
             }
             createGameField(gameMatrix);
@@ -31,7 +33,7 @@ document.addEventListener("touchmove", (e) => {
             canMove = moveDouwn(gameMatrix);
     
             if (canMove) {
-              moveBackgroundDown()
+             /*  moveBackgroundDown() */
               generateCell(gameMatrix);
             }
             createGameField(gameMatrix);
@@ -42,7 +44,7 @@ document.addEventListener("touchmove", (e) => {
           if (!isGameOver) {
             canMove = moveLeft(gameMatrix);
             if (canMove) {
-              moveBackgroundLeft()
+             /*  moveBackgroundLeft() */
               generateCell(gameMatrix);
             }
             createGameField(gameMatrix);
@@ -51,7 +53,7 @@ document.addEventListener("touchmove", (e) => {
     
         case (directionX > 0):
           if (!isGameOver) {
-            moveBackgroundRight()
+           /*  moveBackgroundRight() */
             canMove = moveRight(gameMatrix);
             if (canMove) {
               generateCell(gameMatrix);
