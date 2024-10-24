@@ -5,29 +5,34 @@ let score = 0;
 
 
 function sumTailValue(a, b) {
-  let res = a + b;
-  score += res;
-
-  getBestScore(score);
-  scoreDisplay.textContent = score;
-  return res;
+    let res = a + b;  
+    score += res;    
+    getBestScore(score);  
+    scoreDisplay.textContent = score;   
+    return res;    
 }
+
 
 function getBestScore(score) {
-  if (score < +localStorage.getItem("score")) {
-    return;
+
+  if (score < +localStorage.getItem('score')) {
+     return;
   }
-  bestScoreDisplay.textContent = score;
-  saveBestScore();
-  showBestScore();
+  
+  bestScoreDisplay.textContent = score; 
+  saveBestScore(); 
+  showBestScore();  
+
 }
 
+
 function saveBestScore() {
-  localStorage.setItem("score", bestScoreDisplay.textContent);
+  localStorage.setItem('score', bestScoreDisplay.textContent);
 }
 
 function showBestScore() {
-  bestScoreDisplay.textContent = localStorage.getItem("score");
+  bestScoreDisplay.textContent = localStorage.getItem('score');
 }
 
-showBestScore();
+
+showBestScore();  

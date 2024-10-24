@@ -291,3 +291,41 @@ h2 {
   justify-content: center;
 }
 /* --/FOOTER --*/
+
+
+
+/* --  MOBILE -- */
+
+@media (400px <=width <=1000px) {
+  .header__main {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .game__main {
+    padding: 10px 0;
+    align-items: center;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .game__container_outer {
+    padding: 10px;
+    max-width: 95%;
+  }
+
+  .game__container_iner {
+    gap: 10px;
+    width: 95%;
+  }
+
+  .game__cell {
+    padding: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+  }
+}
+
+
+/* --  / MOBILE -- */
