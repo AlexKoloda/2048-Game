@@ -301,6 +301,7 @@ h2 {
   body {
     overflow-x: hidden;
     overflow-y: hidden;
+    max-height: 100%;
   }
 
 
