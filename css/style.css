@@ -296,7 +296,7 @@ h2 {
 
 /* --  MOBILE -- */
 
-@media (400px <=width <=800px) {
+@media (400px <=width <=1300px) {
 
   body {
     overflow-x: hidden;
