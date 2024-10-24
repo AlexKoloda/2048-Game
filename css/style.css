@@ -88,7 +88,8 @@ h2 {
   transform: scale(1.1);
 }
 
-.header_button_new:active {
+.header_button_new:active,
+.header_button_new:focus-visible {
   transform: scale(0.8);
 }
 /* -- /HEADER -- */

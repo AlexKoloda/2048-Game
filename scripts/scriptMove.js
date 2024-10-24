@@ -17,7 +17,7 @@ window.addEventListener("keydown", (event) => {
 
       case 'ArrowDown':
         if (!isGameOver) {
-          const canMove = moveDouwn(gameMatrix);
+          const canMove = moveDown(gameMatrix);
   
           if (canMove) {
             generateCell(gameMatrix);
@@ -77,7 +77,7 @@ function moveUp(arr) {
   return !areMatricesEqual(arr, oldMatrix);
 }
 
-function moveDouwn(arr) {
+function moveDown(arr) {
   const oldMatrix = JSON.parse(JSON.stringify(arr));
   let resArr = arr.reverse();
   const size = resArr.length;
