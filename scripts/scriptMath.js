@@ -31,7 +31,7 @@ function saveBestScore() {
 }
 
 function showBestScore() {
-  bestScoreDisplay.textContent = localStorage.getItem('score');
+  bestScoreDisplay.textContent = localStorage.getItem('score') || 0;
 }
 
 
