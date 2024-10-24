@@ -8,7 +8,7 @@ document.addEventListener("touchmove", (e) => {
      let directionY = e.touches[0].pageY - event.touches[0].pageY;
      let directionX = e.touches[0].pageX - event.touches[0].pageX;
      
-     event.defaultPrevented();
+    
      
     
      switch (true) {
