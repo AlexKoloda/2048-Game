@@ -298,6 +298,11 @@ h2 {
 
 @media (300px <=width <=1000px) {
 
+  html{ 
+    overflow: hidden;
+  }
+
+
   body {
     overflow-x: hidden;
     overflow-y: hidden;
