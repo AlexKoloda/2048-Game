@@ -10,17 +10,17 @@ body {
 }
 
 .body--down {
-  transform: translate(0, 8px);
+  transform: translate(0, 5px);
 }
 
 .body--up {
-  transform: translate(0, -8px);
+  transform: translate(0, -5px);
 }
 .body--left {
-  transform: translate(-8px, 0);
+  transform: translate(-5px, 0);
 }
 .body--right {
-  transform: translate(-8px, 0);
+  transform: translate(5px, 0);
 }
 
 p {

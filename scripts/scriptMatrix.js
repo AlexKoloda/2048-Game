@@ -1,14 +1,9 @@
 let gameContainer = document.querySelector(".game__container_iner");
 const buttonNewGame = document.querySelector(".header_button_new");
 let isFirstCall = true;
+let isGameOver = false;
 
-/* let gameMatrix = [
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
-];
- */
+
 let gameTail = {
   value: 0,
   wasSum: false,
@@ -20,8 +15,6 @@ let gameMatrix = [
   [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
   [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
 ];
-
-console.log(gameMatrix[0][0].value)
 
 function createGameField(arr, isFirstCall = false) {
   gameContainer.innerHTML = "";
@@ -45,8 +38,7 @@ function createGameField(arr, isFirstCall = false) {
       cell.append(tail);
     }
     gameContainer.append(cell);
-    gameTail.wasSum = false;
-    console.log(gameTail.wasSum)
+    getWasSumFalse(gameMatrix);
   });
 }
 
@@ -61,7 +53,7 @@ function generateCell(arr, skipGameOverChecking = false) {
 
     if (!skipGameOverChecking) {
       checkEndGame(arr);
-    }
+    } 
   }
 }
 
@@ -101,17 +93,13 @@ function createNewGame(arr) {
   createGameField(gameMatrix, true);
 }
 
-let isGameOver = false;
-
 function checkEndGame(arr) {
-
-return 
-
   const hasZero = arr.flat().some((item) => item === 0);
   const hasFinal = arr.flat().some((item) => item === 2048);
 
   if (!hasZero && !checkForAvailableMoves(arr)) {
     isGameOver = true;
+    createNewGame(gameMatrix);
     alert(`Конец игры! Ваш счет: ${score} `);
   }
 
@@ -119,11 +107,7 @@ return
     createNewGame(gameMatrix);
     alert(`Победа! Ваш счет: ${score}`);
   }
-
-
 }
-
-createGameField(gameMatrix);
 
 function checkForAvailableMoves(arr) {
   const size = arr.length;
@@ -143,3 +127,20 @@ function checkForAvailableMoves(arr) {
   }
   return res;
 } 
+
+function getWasSumFalse(arr) {
+  const size = arr.length;  
+  
+  for (let col = 0; col < size; col++) {
+    for (let row = 0; row < size; row++) {
+      let currentCell = arr[col][row];
+
+      if ( currentCell.value !== 0) {
+        currentCell.wasSum = false;
+      }
+    }
+  }
+} 
+
+createGameField(gameMatrix);
+getWasSumFalse(gameMatrix);

@@ -1,4 +1,3 @@
-const game__container = document.querySelector("#game__main");
 
 
 window.addEventListener("keydown", (event) => {
@@ -11,7 +10,8 @@ window.addEventListener("keydown", (event) => {
         if (canMove) {          
           generateCell(gameMatrix);
         }
-        createGameField(gameMatrix);
+        moveBackgroundUp();
+        createGameField(gameMatrix);        
         break;
       }
 
@@ -22,29 +22,33 @@ window.addEventListener("keydown", (event) => {
           if (canMove) {
             generateCell(gameMatrix);
           }
-          createGameField(gameMatrix);
+          moveBackgroundDown(); 
+          createGameField(gameMatrix);                   
           break;
         }
   
       case 'ArrowLeft':
+        
         if (!isGameOver) {
           const canMove = moveLeft(gameMatrix);
 
           if (canMove) {
             generateCell(gameMatrix);
           }
-          createGameField(gameMatrix);
+          moveBackgroundLeft();
+          createGameField(gameMatrix);          
           break;
         }
   
       case 'ArrowRight':
         if (!isGameOver) {
           const canMove = moveRight(gameMatrix);
-
+          
           if (canMove) {             
             generateCell(gameMatrix);
           }
-          createGameField(gameMatrix);
+          moveBackgroundRight();
+          createGameField(gameMatrix);          
           break;
       }
   }
@@ -168,33 +172,35 @@ function moveRight(arr) {
 
 // --!  Функции для создания анимации !-- //
 
-/* function moveBackgroundDown() {
-  game__container.classList.add("body--down");
+const gameBox = document.querySelector(".game__container_iner");
+
+function moveBackgroundDown() {
+  gameBox.classList.add("body--down");
   setTimeout(() => {
-    game__container.classList.remove("body--down");
-  }, 150);
+    gameBox.classList.remove("body--down");
+  }, 200);
 }
 
 function moveBackgroundUp() {
-  game__container.classList.add("body--up");
+  gameBox.classList.add("body--up");
   setTimeout(() => {
-    game__container.classList.remove("body--up");
-  }, 150);
+    gameBox.classList.remove("body--up");
+  }, 200);
 }
 
 function moveBackgroundLeft() {
-  game__container.classList.add("body--left");
+  gameBox.classList.add("body--left");
   setTimeout(() => {
-    game__container.classList.remove("body--left");
-  }, 150);
+    gameBox.classList.remove("body--left");
+  }, 200);
 }
 
 function moveBackgroundRight() {
-  game__container.classList.add("body--right");
+  gameBox.classList.add("body--right");
   setTimeout(() => {
-    game__container.classList.remove("body--right");
-  }, 150);
-} */
+    gameBox.classList.remove("body--right");
+  }, 200);
+}
 
 function reverseMatrix(arr) {
   arr.map((item) => {
@@ -204,9 +210,9 @@ function reverseMatrix(arr) {
 
 function areMatricesEqual(matrix1, matrix2) {
 
-
   for (let i = 0; i < matrix1.length; i++) {
     for (let j = 0; j < matrix1[i].length; j++) {
+
       if (matrix1[i][j].value !== matrix2[i][j].value) {
         return false;
       }
@@ -214,3 +220,5 @@ function areMatricesEqual(matrix1, matrix2) {
   }
   return true;
 }
+
+
