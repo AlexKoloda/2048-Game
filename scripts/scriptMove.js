@@ -69,7 +69,7 @@ function moveUp(arr) {
             currentCell.value = nextCell.value;
             nextCell.value = 0;
 
-          } else if (currentCell.value === nextCell.value && !currentCell.wasSum ) {
+          } else if (currentCell.value === nextCell.value && !currentCell.wasSum  && !nextCell.wasSum) {
             currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell);
             nextCell.value = 0;
             break;
@@ -97,7 +97,7 @@ function moveDown(arr) {
             currentCell.value = nextCell.value;
             nextCell.value = 0;
 
-          } else if (currentCell.value === nextCell.value && !currentCell.wasSum) {
+          } else if (currentCell.value === nextCell.value && !currentCell.wasSum && !nextCell.wasSum) {
             currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell);
             nextCell.value = 0;
             break;
@@ -126,7 +126,7 @@ function moveLeft(arr) {
             currentCell.value = nextCell.value;
             nextCell.value = 0;
 
-          } else if (currentCell.value === nextCell.value && !currentCell.wasSum) {
+          } else if (currentCell.value === nextCell.value && !currentCell.wasSum && !nextCell.wasSum) {
             currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell);
             nextCell.value = 0;
             break;          
@@ -156,7 +156,7 @@ function moveRight(arr) {
             currentCell.value = nextCell.value;
             nextCell.value = 0;
 
-          } else if (currentCell.value === nextCell.value && !currentCell.wasSum) {
+          } else if (currentCell.value === nextCell.value && !currentCell.wasSum && !nextCell.wasSum) {
             currentCell.value = sumTailValue(currentCell.value, nextCell.value, currentCell);
             nextCell.value = 0;
             break;
