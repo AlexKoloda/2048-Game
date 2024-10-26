@@ -1,4 +1,4 @@
-let gameContainer = document.querySelector(".game__container_iner");
+let gameContainer = document.querySelector(".game__container_inner");
 const buttonNewGame = document.querySelector(".header_button_new");
 let isFirstCall = true;
 let isGameOver = false;

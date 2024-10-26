@@ -172,7 +172,7 @@ function moveRight(arr) {
 
 // --!  Функции для создания анимации !-- //
 
-const gameBox = document.querySelector(".game__container_iner");
+const gameBox = document.querySelector(".game__container_inner");
 
 function moveBackgroundDown() {
   gameBox.classList.add("body--down");

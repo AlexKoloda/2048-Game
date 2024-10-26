@@ -1,6 +1,6 @@
 let eventToch = false;
 
-document.addEventListener("touchstart", (e) => {
+gameBox.addEventListener("touchstart", (e) => {
   eventToch = e;
 });
 document.addEventListener("touchmove", (e) => {
