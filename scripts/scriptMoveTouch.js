@@ -1,9 +1,10 @@
 let eventToch = false;
+const gameBox = document.querySelector(".game__container_inner");
 
-gameBox.addEventListener("touchstart", (e) => {
+document.addEventListener("touchstart", (e) => {
   eventToch = e;
 });
-document.addEventListener("touchmove", (e) => {
+gameBox.addEventListener("touchmove", (e) => {
   if (eventToch) {
     let directionY = Math.floor(e.touches[0].pageY - eventToch.touches[0].pageY);
     let directionX = Math.floor(e.touches[0].pageX - eventToch.touches[0].pageX);
@@ -16,7 +17,7 @@ document.addEventListener("touchmove", (e) => {
           if (canMove) {
             generateCell(gameMatrix);
           }
-          moveBackgroundUp();
+          moveBackground('body--up');
           createGameField(gameMatrix);
           break;
         }
@@ -28,7 +29,7 @@ document.addEventListener("touchmove", (e) => {
           if (canMove) {
             generateCell(gameMatrix);
           }
-          moveBackgroundDown();
+          moveBackground('body--down'); 
           createGameField(gameMatrix);
           break;
         }
@@ -39,7 +40,7 @@ document.addEventListener("touchmove", (e) => {
           if (canMove) {
             generateCell(gameMatrix);
           }
-          moveBackgroundLeft();
+          moveBackground('body--left');
           createGameField(gameMatrix);
           break;
         }
@@ -50,7 +51,7 @@ document.addEventListener("touchmove", (e) => {
           if (canMove) {
             generateCell(gameMatrix);
           }
-          moveBackgroundRight();
+          moveBackground('body--right');
           createGameField(gameMatrix);
           break;
         }

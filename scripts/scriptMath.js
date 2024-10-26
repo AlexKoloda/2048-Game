@@ -1,6 +1,5 @@
-let scoreDisplay = document.querySelector(".score__value");
-let bestScoreDisplay = document.querySelector(".best__value");
-
+const scoreDisplay = document.querySelector(".score__value");
+const bestScoreDisplay = document.querySelector(".best__value");
 let score = 0;
 
 function sumTailValue(a, b, cell) {    

@@ -1,5 +1,4 @@
 
-
 window.addEventListener("keydown", (event) => {
   switch (event.key) {
 
@@ -10,7 +9,7 @@ window.addEventListener("keydown", (event) => {
         if (canMove) {          
           generateCell(gameMatrix);
         }
-        moveBackgroundUp();
+        moveBackground('body--up');
         createGameField(gameMatrix);        
         break;
       }
@@ -22,7 +21,7 @@ window.addEventListener("keydown", (event) => {
           if (canMove) {
             generateCell(gameMatrix);
           }
-          moveBackgroundDown(); 
+          moveBackground('body--down'); 
           createGameField(gameMatrix);                   
           break;
         }
@@ -35,7 +34,7 @@ window.addEventListener("keydown", (event) => {
           if (canMove) {
             generateCell(gameMatrix);
           }
-          moveBackgroundLeft();
+          moveBackground('body--left');
           createGameField(gameMatrix);          
           break;
         }
@@ -47,7 +46,7 @@ window.addEventListener("keydown", (event) => {
           if (canMove) {             
             generateCell(gameMatrix);
           }
-          moveBackgroundRight();
+          moveBackground('body--right');
           createGameField(gameMatrix);          
           break;
       }
@@ -58,9 +57,10 @@ function moveUp(arr) {
   const oldMatrix = JSON.parse(JSON.stringify(arr));
   const size = arr.length;
 
-  for (let i = 0; i < 4; i++) {
+for (let i = 0; i < 4; i++) {
     for (let row = 0; row < size; row++) {
       for (let col = 0; col < size; col++) {
+
         if (col !== size - 1) {
           let currentCell = arr[col][row];
           let nextCell = arr[col + 1][row];
@@ -77,7 +77,7 @@ function moveUp(arr) {
         }
       }
     }
-  }
+  } 
   return !areMatricesEqual(arr, oldMatrix);
 }
 
@@ -170,35 +170,10 @@ function moveRight(arr) {
   return !areMatricesEqual(arr, oldMatrix);
 }
 
-// --!  Функции для создания анимации !-- //
-
-const gameBox = document.querySelector(".game__container_inner");
-
-function moveBackgroundDown() {
-  gameBox.classList.add("body--down");
+function moveBackground(string) {
+  gameContainer.classList.add(`${string}`);
   setTimeout(() => {
-    gameBox.classList.remove("body--down");
-  }, 200);
-}
-
-function moveBackgroundUp() {
-  gameBox.classList.add("body--up");
-  setTimeout(() => {
-    gameBox.classList.remove("body--up");
-  }, 200);
-}
-
-function moveBackgroundLeft() {
-  gameBox.classList.add("body--left");
-  setTimeout(() => {
-    gameBox.classList.remove("body--left");
-  }, 200);
-}
-
-function moveBackgroundRight() {
-  gameBox.classList.add("body--right");
-  setTimeout(() => {
-    gameBox.classList.remove("body--right");
+    gameContainer.classList.remove(`${string}`);
   }, 200);
 }
 
@@ -206,7 +181,7 @@ function reverseMatrix(arr) {
   arr.map((item) => {
     return item.reverse();
   });
-}
+} 
 
 function areMatricesEqual(matrix1, matrix2) {
 

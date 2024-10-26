@@ -1,26 +1,26 @@
-let gameContainer = document.querySelector(".game__container_inner");
+const gameContainer = document.querySelector(".game__container_inner");
 const buttonNewGame = document.querySelector(".header_button_new");
 let isFirstCall = true;
 let isGameOver = false;
 
+const gameMatrix = [[], [], [], []];
 
-let gameTail = {
-  value: 0,
-  wasSum: false,
+function createGameMatrix(arr) {
+  const size = arr.length;
+
+  for (let row = 0; row < size; row++) {
+    for (let col = 0; col < size; col++) {
+      if (col !== size) {
+        arr[row][col] = { value: 0, wasSum: false };
+      }
+    }
+  }
 }
-
-let gameMatrix = [
-  [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
-  [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
-  [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
-  [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
-];
 
 function createGameField(arr, isFirstCall = false) {
   gameContainer.innerHTML = "";
 
   if (isFirstCall) {
-    scoreDisplay.textContent = 0;
     generateCell(gameMatrix, true);
     generateCell(gameMatrix, true);
   }
@@ -38,33 +38,30 @@ function createGameField(arr, isFirstCall = false) {
       cell.append(tail);
     }
     gameContainer.append(cell);
-    getWasSumFalse(gameMatrix);
+    changeWasSumProp(gameMatrix);
   });
 }
 
 function generateCell(arr, skipGameOverChecking = false) {
   const colIndex = Math.floor(Math.random() * 4);
   const rowIndex = Math.floor(Math.random() * 4);
-  let randomTail = arr[colIndex][rowIndex];
-  
+  const randomTail = arr[colIndex][rowIndex];
+
   if (randomTail.value === 0) {
     const tailValue = generateTailValue();
     randomTail.value = tailValue;
 
     if (!skipGameOverChecking) {
       checkEndGame(arr);
-    } 
+    }
   }
 }
 
 function generateTailValue() {
-  let randomNumber = Math.random().toFixed(2);
+  const randomNumber = Math.random().toFixed(2);
+  const maxValueFourTail = 0.1;
 
-  if (randomNumber < 0.1) {
-    return 4;
-  } else {
-    return 2;
-  }
+  return randomNumber < maxValueFourTail ? 4 : 2;
 }
 
 buttonNewGame.addEventListener("click", () => {
@@ -77,70 +74,61 @@ buttonNewGame.addEventListener("click", () => {
   createNewGame(gameMatrix);
 });
 
-
-function createNewGame(arr) {
-  
-  gameMatrix = [
-    [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
-    [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
-    [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
-    [{value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}, {value: 0, wasSum: false,}],
-  ];
-  
-  
+function createNewGame(arr) {  
+  createGameMatrix(arr);
   score = 0;
   scoreDisplay.textContent = score;
   createGameField(gameMatrix, true);
 }
 
 function checkEndGame(arr) {
-  const hasZero = arr.flat().some((item) => item === 0);
-  const hasFinal = arr.flat().some((item) => item === 2048);
+  const hasEmptyCell = arr.flat().some((item) => item === 0);
+  const hasFinalCell = arr.flat().some((item) => item === 2048);
 
-  if (!hasZero && !checkForAvailableMoves(arr)) {
+  if (!hasEmptyCell && !checkForAvailableMoves(arr)) {
     isGameOver = true;
     createNewGame(gameMatrix);
-    alert(`Конец игры! Ваш счет: ${score} `);
+    alert(`Конец игры!`);
   }
 
-  if (hasFinal) {
+  if (hasFinalCell) {
     createNewGame(gameMatrix);
-    alert(`Победа! Ваш счет: ${score}`);
+    alert(`Победа!`);
   }
 }
 
 function checkForAvailableMoves(arr) {
   const size = arr.length;
-  let res = false;
-  
+  let hasAvaibleMoves = false;
+
   for (let col = 0; col < size; col++) {
     for (let row = 0; row < size; row++) {
-      
       if (col !== size - 1 && row !== size - 1) {
         if (arr[col][row].value === arr[col][row + 1].value) {
-          res = true;
+          hasAvaibleMoves = true;
         } else if (arr[row][col].value === arr[row + 1][col].value) {
-          res = true;
+          hasAvaibleMoves = true;
         }
       }
     }
   }
-  return res;
-} 
+  return hasAvaibleMoves;
+}
 
-function getWasSumFalse(arr) {
-  const size = arr.length;  
-  
+function changeWasSumProp(arr) {  
+  const size = arr.length;
+
   for (let col = 0; col < size; col++) {
     for (let row = 0; row < size; row++) {
       let currentCell = arr[col][row];
 
-      if ( currentCell.value !== 0) {
+      if (currentCell.value !== 0) {
         currentCell.wasSum = false;
       }
     }
   }
-} 
+}
 
+createGameMatrix(gameMatrix);
 createGameField(gameMatrix);
-getWasSumFalse(gameMatrix);
+changeWasSumProp(gameMatrix);
